@@ -16,16 +16,18 @@ class UzytkownikMenedzer
     int idZalogowanegoUzytkownika;
     vector <Uzytkownik> uzytkownicy;//vector "uzytkownicy" jest teraz skladowa klasy,
     //dlatego nie musimy wysylac go np. do voida "rejestracjaUzytkownika"
-    PlikZUzytkownikami plikZUzytkownikami;//<- piszemy ten wiersz tylko po to, by w .cpp uzyc funkcji "plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);" na obiekcie "plikZUzy..."
 
     Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
+    PlikZUzytkownikami plikZUzytkownikami;//<- piszemy ten wiersz tylko po to, by w .cpp uzyc funkcji "plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);" na obiekcie "plikZUzy..."
+
 
 
 public:
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    void wczytajUzytkownikowZPliku();
 };
 
 #endif

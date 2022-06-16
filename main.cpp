@@ -7,6 +7,8 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa; //tworzymy pierwszy obiekt klasy "KsiazkaAdresowa"
 
+
+    ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
     ksiazkaAdresowa.rejestracjaUzytkownika();
     ksiazkaAdresowa.rejestracjaUzytkownika();
     ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
