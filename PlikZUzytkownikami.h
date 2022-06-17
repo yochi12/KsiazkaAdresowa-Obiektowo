@@ -10,7 +10,7 @@ using namespace std;
 
 class PlikZUzytkownikami
 {
-    string nazwaPlikuZUzytkownikami;
+    const string nazwaPlikuZUzytkownikami; //zmieniamy plik na "const", nazwa tej zmiennej ma sie nie zmieniac w calym programie
     fstream plikTekstowy;
 
     bool czyPlikJestPusty();
@@ -18,7 +18,7 @@ class PlikZUzytkownikami
     Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
 
 public:
-    PlikZUzytkownikami();
+    PlikZUzytkownikami(string NAZWAPLIKUZUZYTKOWNIKAMI) : nazwaPlikuZUzytkownikami(NAZWAPLIKUZUZYTKOWNIKAMI) {}; //korzystamy z listy inicjalizacyjnej
     void dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik);
     vector <Uzytkownik> wczytajUzytkownikowZPliku();
 };

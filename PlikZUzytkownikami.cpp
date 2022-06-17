@@ -1,11 +1,6 @@
 #include "PlikZUzytkownikami.h"
 #include "MetodyPomocnicze.h"
 
-PlikZUzytkownikami::PlikZUzytkownikami()
-{
-    nazwaPlikuZUzytkownikami="Uzytkownicy.txt";
-}
-
 void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik)
 {
     string liniaZDanymiUzytkownika = "";
