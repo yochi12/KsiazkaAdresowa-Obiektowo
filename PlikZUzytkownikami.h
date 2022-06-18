@@ -11,9 +11,8 @@ using namespace std;
 class PlikZUzytkownikami
 {
     const string nazwaPlikuZUzytkownikami; //zmieniamy plik na "const", nazwa tej zmiennej ma sie nie zmieniac w calym programie
-    fstream plikTekstowy;
 
-    bool czyPlikJestPusty();
+    bool czyPlikJestPusty(fstream &plikTekstowy);//nie wiem czemu MUSZA tu byc ampersandy
     string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik);
     Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
 
