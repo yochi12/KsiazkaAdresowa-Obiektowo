@@ -122,3 +122,10 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
     }
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
+
+void UzytkownikMenedzer::wylogujUzytkownika()
+{
+    idZalogowanegoUzytkownika = 0; //chwilowo ta zmienna nie jest nam do niczego potrzebna
+    cout << "Trwa wylogowywanie..." << endl << endl;
+    system("pause");
+}
