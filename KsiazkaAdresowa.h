@@ -16,7 +16,9 @@ public:
     };
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    void logowanieUzytkownika(); //metoda z obiektu "UzytkownikMenedzer"
+    void logowanieUzytkownika();
+    void zmianaHaslaZalogowanegoUzytkownika();
+
 };
 
 #endif
