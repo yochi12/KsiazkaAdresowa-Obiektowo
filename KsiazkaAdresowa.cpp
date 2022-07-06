@@ -25,4 +25,16 @@ void KsiazkaAdresowa::wylogujUzytkownika()
     uzytkownikMenedzer.wylogujUzytkownika();
 }
 
+void KsiazkaAdresowa::wypiszIdOstatniegoAdresata()
+{
+    adresatMenedzer.wypiszIdOstatniegoAdresata();
+}
+
+void KsiazkaAdresowa::dodajAdresata()
+{
+    adresatMenedzer.dodajAdresata(uzytkownikMenedzer.idZalogowanegoUzytkownika);
+}
+
+
+
 

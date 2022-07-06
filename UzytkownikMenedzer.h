@@ -13,7 +13,7 @@ using namespace std;
 
 class UzytkownikMenedzer
 {
-    int idZalogowanegoUzytkownika;
+
     vector <Uzytkownik> uzytkownicy;//vector "uzytkownicy" jest teraz skladowa klasy,
     //dlatego nie musimy wysylac go np. do voida "rejestracjaUzytkownika"
 
@@ -25,6 +25,10 @@ class UzytkownikMenedzer
 
 
 public:
+
+    int idZalogowanegoUzytkownika=5; ///tymczasowo przerzucony z "private" do "public"
+    ///nie mozna zrobic tego jako "static", jest wywolywane w kilku miejscach, trzeba pomyslec
+
     UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {};
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();

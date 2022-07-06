@@ -2,6 +2,7 @@
 #define METODYPOMOCNICZE_H
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -11,6 +12,7 @@ public:
     //metody statyczne
     static string konwerjsaIntNaString(int liczba);
     static string wczytajLinie();
+    static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
 };
 
 #endif
