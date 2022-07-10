@@ -8,23 +8,37 @@ int main()
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt"); //tworzymy pierwszy obiekt klasy "KsiazkaAdresowa"
 
     ///zabawa z uzytkownikami
-    //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
+    ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
     //ksiazkaAdresowa.rejestracjaUzytkownika();
     //ksiazkaAdresowa.rejestracjaUzytkownika();
     //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
-    //ksiazkaAdresowa.logowanieUzytkownika();
+    ksiazkaAdresowa.logowanieUzytkownika();
     //ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
     //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
     //ksiazkaAdresowa.wylogujUzytkownika();
 
     ///zabawa z adresatami
-    ksiazkaAdresowa.wypiszIdOstatniegoAdresata();
+    ksiazkaAdresowa.nadajIdOstatniegoAdresata();
+    //ksiazkaAdresowa.wyswietlWszystkichAdresatow();//metoda ze strukturalnego pliku
+
     ksiazkaAdresowa.dodajAdresata();
-    ksiazkaAdresowa.wypiszIdOstatniegoAdresata();
+    ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+
+
+    ksiazkaAdresowa.nadajIdOstatniegoAdresata();
+    ksiazkaAdresowa.wylogujUzytkownika();
+    ksiazkaAdresowa.logowanieUzytkownika();
     ksiazkaAdresowa.dodajAdresata();
-    ksiazkaAdresowa.wypiszIdOstatniegoAdresata();
+    ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+
+    ksiazkaAdresowa.nadajIdOstatniegoAdresata();
+    ksiazkaAdresowa.wylogujUzytkownika();
+    ksiazkaAdresowa.logowanieUzytkownika();
     ksiazkaAdresowa.dodajAdresata();
-    ksiazkaAdresowa.wypiszIdOstatniegoAdresata();
+    ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+
+
+
 
     return 0;
 }

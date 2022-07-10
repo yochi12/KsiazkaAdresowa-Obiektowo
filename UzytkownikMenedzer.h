@@ -7,6 +7,7 @@
 #include <sstream>
 
 #include "Uzytkownik.h"
+#include "MetodyPomocnicze.h"
 #include "PlikZUzytkownikami.h"
 
 using namespace std;
@@ -26,8 +27,7 @@ class UzytkownikMenedzer
 
 public:
 
-    int idZalogowanegoUzytkownika=5; ///tymczasowo przerzucony z "private" do "public"
-    ///nie mozna zrobic tego jako "static", jest wywolywane w kilku miejscach, trzeba pomyslec
+    int idZalogowanegoUzytkownika; ///tymczasowo przerzucony z "private" do "public"
 
     UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {};
     void rejestracjaUzytkownika();

@@ -1,5 +1,4 @@
 #include "UzytkownikMenedzer.h"
-#include "MetodyPomocnicze.h"
 
 void UzytkownikMenedzer::rejestracjaUzytkownika()
 {
@@ -125,7 +124,8 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
 
 void UzytkownikMenedzer::wylogujUzytkownika()
 {
-    idZalogowanegoUzytkownika = 0; //chwilowo ta zmienna nie jest nam do niczego potrzebna
+    idZalogowanegoUzytkownika = 0;
     cout << "Trwa wylogowywanie..." << endl << endl;
+    //tutaj przydaloby sie wyczyscic vector z adresatami, ale to wymagaloby wiecej przeskakiwania....
     system("pause");
 }

@@ -25,15 +25,28 @@ void KsiazkaAdresowa::wylogujUzytkownika()
     uzytkownikMenedzer.wylogujUzytkownika();
 }
 
-void KsiazkaAdresowa::wypiszIdOstatniegoAdresata()
+
+void KsiazkaAdresowa::nadajIdOstatniegoAdresata()
 {
-    adresatMenedzer.wypiszIdOstatniegoAdresata();
+    adresatMenedzer.nadajIdOstatniegoAdresata(uzytkownikMenedzer.idZalogowanegoUzytkownika);
 }
 
 void KsiazkaAdresowa::dodajAdresata()
 {
     adresatMenedzer.dodajAdresata(uzytkownikMenedzer.idZalogowanegoUzytkownika);
 }
+
+void KsiazkaAdresowa::wypiszWszystkichAdresatow()
+{
+    adresatMenedzer.wypiszWszystkichAdresatow();
+}
+
+void KsiazkaAdresowa::wyswietlWszystkichAdresatow()
+{
+    adresatMenedzer.wyswietlWszystkichAdresatow();
+}
+
+
 
 
 

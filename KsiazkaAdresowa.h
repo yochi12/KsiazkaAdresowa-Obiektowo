@@ -23,8 +23,10 @@ public:
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogujUzytkownika();
 
-    void wypiszIdOstatniegoAdresata();
+    void nadajIdOstatniegoAdresata();
     void dodajAdresata();
+    void wypiszWszystkichAdresatow();
+    void wyswietlWszystkichAdresatow();//metoda ze strukturalnego pliku
 };
 
 #endif
