@@ -18,27 +18,20 @@ int main()
     //ksiazkaAdresowa.wylogujUzytkownika();
 
     ///zabawa z adresatami
-    ksiazkaAdresowa.nadajIdOstatniegoAdresata();
-    //ksiazkaAdresowa.wyswietlWszystkichAdresatow();//metoda ze strukturalnego pliku
-
     ksiazkaAdresowa.dodajAdresata();
-    ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+    ksiazkaAdresowa.wyswietlWszystkichAdresatow();//metoda ze strukturalnego pliku
 
-
-    ksiazkaAdresowa.nadajIdOstatniegoAdresata();
     ksiazkaAdresowa.wylogujUzytkownika();
     ksiazkaAdresowa.logowanieUzytkownika();
     ksiazkaAdresowa.dodajAdresata();
     ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+    ksiazkaAdresowa.dodajAdresata();
+    ksiazkaAdresowa.wyswietlWszystkichAdresatow();
 
-    ksiazkaAdresowa.nadajIdOstatniegoAdresata();
     ksiazkaAdresowa.wylogujUzytkownika();
     ksiazkaAdresowa.logowanieUzytkownika();
     ksiazkaAdresowa.dodajAdresata();
     ksiazkaAdresowa.wyswietlWszystkichAdresatow();
-
-
-
 
     return 0;
 }

@@ -129,3 +129,14 @@ void UzytkownikMenedzer::wylogujUzytkownika()
     //tutaj przydaloby sie wyczyscic vector z adresatami, ale to wymagaloby wiecej przeskakiwania....
     system("pause");
 }
+
+void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int nowyIdZalogowanegoUzytkownika)
+{
+    idZalogowanegoUzytkownika = nowyIdZalogowanegoUzytkownika;
+}
+
+
+int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
+{
+    return idZalogowanegoUzytkownika;
+}

@@ -1,58 +1,57 @@
-#include "AdresatMenedzer.h"
+#include "AdresatMenedzer.h" ///pozostalo zmienic rzeczy z public na private oraz zabawa z konstruktorem nazwy pliku z adresatami
 
 AdresatMenedzer::AdresatMenedzer()
 {
     idOstatniegoAdresata=0;//zainicjalizowana wartosc zmiennej, aby nie byla "jakakolwiek" (raczej malo istotne i nic nie zmienia)
 }
 
-void AdresatMenedzer::nadajIdOstatniegoAdresata(int idZalogowanegoUzytkownika)
+
+int AdresatMenedzer::podajIdOstatniegoAdresata(string daneOstaniegoAdresataWPliku)
 {
-    adresaci=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
-    idOstatniegoAdresata = podajIdOstatniegoAdresata(); //wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);//ta linijka nie jest (oryginalnie) z tej funkcji (metody)
-
-    cout<<"nadajIdOstatniegoAdresata="<<idOstatniegoAdresata;
-}
-
-
-int AdresatMenedzer::podajIdOstatniegoAdresata()
-{
-    if (plikZAdresatami.daneOstaniegoAdresataWPliku != "")
+    cout<<"daneOstaniegoAdresataWPliku(AdresatMenedzer) = "<<daneOstaniegoAdresataWPliku<<endl; //tymczasowe
+    cout<<"daneOstaniegoAdresataWPliku(AdresatMenedzer, plikZAdresatami) = "<<plikZAdresatami.daneOstaniegoAdresataWPliku<<endl; system("pause"); //tymczasowe
+    if (daneOstaniegoAdresataWPliku != "")
     {
-        idOstatniegoAdresata = plikZAdresatami.pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(plikZAdresatami.daneOstaniegoAdresataWPliku);
-        cout<<"wczytajAdresatowZalogowanegoUzytkownikaZPliku, if= "<<idOstatniegoAdresata;
-        system("pause");
+        cout<<"- | "<<idOstatniegoAdresata<<" <== podajIdOstatniegoAdresata, if"<<endl;// <-- tymczasowe
+        idOstatniegoAdresata = plikZAdresatami.pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
         return idOstatniegoAdresata;
     }
     else
-        cout<<"wczytajAdresatowZalogowanegoUzytkownikaZPliku, return=0 ="<<idOstatniegoAdresata;
-        system("pause");
+        cout<<"- | "<<idOstatniegoAdresata<<" <== podajIdOstatniegoAdresata, else"<<endl;// <-- tymczasowe
         return 0;
 }
 
 
-void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)//<-trzeba bedzie zmienic ze zmiennej na funkcje, ktora pobiera zmienna
+void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika, string daneOstaniegoAdresataWPliku)//<-trzeba bedzie zmienic ze zmiennej na funkcje, ktora pobiera zmienna
 {
+    cout<<idZalogowanegoUzytkownika<<" | "<<idOstatniegoAdresata<<" <== dodajAdresata"<<endl;// <-- tymczasowe
     Adresat adresat;
 
-    //system("cls"); //<- pozniej dodamy funkcje kasujaca poprzednie rzeczy
-    cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
+    //za kazdym razem kiedy dodajemy nowego uzytkownika wczytujemy jego WSZYSTKICH adresatow, lepiej jakby raz ich wczytac dla danego uzytkownika
+    ///adresaci=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
+    //linijka wyzej byla zanim udalo sie ja zaimplementowac do "KsiazkaAdresowa"
 
-    cout<<"idZalogowanegoUzytkownika = "<<idZalogowanegoUzytkownika<<endl;
+    if (idOstatniegoAdresata==0) //teraz tutaj nadajemy "idOstatniegoAdresata"
+    {
+        cout<<"ID USTATNIEGO UZYTKOWNIKA = 0"<<endl<<endl;
+        idOstatniegoAdresata = podajIdOstatniegoAdresata(daneOstaniegoAdresataWPliku);
+    }
+
+    //system("cls"); //<-- pozniej sie odkomentuje
+    cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
 
     adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
 
     adresaci.push_back(adresat);
     plikZAdresatami.dopiszAdresataDoPliku(adresat);
 
-    //idOstatniegoAdresata=+1; //-> to mi psulo ta zmienna (?)
-
-    cout<<"dodajAdresata = "<<idOstatniegoAdresata;
     system("pause");
 }
 
 
 Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
 {
+    cout<<idZalogowanegoUzytkownika<<" | "<<idOstatniegoAdresata<<" <== podajIdOstatniegoAdresata"<<endl;// <-- tymczasowe
     Adresat adresat;
 
     adresat.ustawId(++idOstatniegoAdresata); //<- dlaczego ta linijka dodaje "1" do zmiennej "idOstatniegoAdresata"??
@@ -74,9 +73,6 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
 
     cout << "Podaj adres: ";
     adresat.ustawAdres(MetodyPomocnicze::wczytajLinie());
-
-    cout<<"podajDaneNowegoAdresata="<<idOstatniegoAdresata;
-    system("pause");
 
     return adresat;
 }
@@ -115,7 +111,7 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow()
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
-    adresaci.clear();
+    //adresaci.clear();
 }
 
 

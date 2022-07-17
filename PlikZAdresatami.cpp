@@ -2,7 +2,7 @@
 
 bool PlikZAdresatami::czyPlikJestPusty()
 {
-    fstream plikTekstowy1;  //dodaje na koniec nazwy "1", aby nie mylilo sie z doklaracja "plikTekstowy" z "PlikZAdresatami.h"
+    fstream plikTekstowy1;  //dodaje na koniec nazwy "1", aby nie mylilo sie z deklaracja "plikTekstowy" z "PlikZAdresatami.h"
     plikTekstowy1.open(nazwaPlikuZAdresatami.c_str(), ios::app);
 
     plikTekstowy1.seekg(0, ios::end);
@@ -59,7 +59,7 @@ string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKre
 
 
 vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
-{//ta metoda ma byc wywolywana przez konstruktor, podobnie jak analogiczna metoda z uzytkownikami
+{
     Adresat adresat;
     vector <Adresat> adresaci;
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
@@ -68,7 +68,6 @@ vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(
 
     //idZalogowanegoUzytkownika=2; //<- tymczasowo (potrzebne do odczytu danych danej osoby bez logowania sie)
 
-    //z jakiegos powodu po przelogowaniu sie na innego uzytkownika wczytuje blednych adresatow....
     if (plikTekstowy.good() == true)
     {
         while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
@@ -80,14 +79,13 @@ vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(
             }
         }
         daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
+        //cout<<endl<<"daneOstaniegoAdresataWPliku (PlikZAdresatami) = "<<daneOstaniegoAdresataWPliku<<endl; //tymczasowe
     }
 
     plikTekstowy.close();
 
     return adresaci;
 }
-
-
 
 
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
