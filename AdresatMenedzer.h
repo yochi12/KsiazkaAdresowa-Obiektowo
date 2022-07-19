@@ -13,8 +13,9 @@ using namespace std;
 
 class AdresatMenedzer
 {
-    int idOstatniegoAdresata;
     PlikZAdresatami plikZAdresatami;
+    int idOstatniegoAdresata;
+
     Adresat podajDaneNowegoAdresata(int idZalogowanegoUzytkownika);
     void wyswietlDaneAdresata(Adresat adresat);
     int podajIdOstatniegoAdresata(string daneOstaniegoAdresataWPliku);
@@ -22,8 +23,9 @@ class AdresatMenedzer
 public:
     vector <Adresat> adresaci; //uzywam polecenia "adresaci.clear()" w "KsiazkaAdresowa", dlatego ten vector jest jako public
 
-    AdresatMenedzer();
-    void dodajAdresata(int idZalogowanegoUzytkownika, string daneOstaniegoAdresataWPliku);
+    AdresatMenedzer(){idOstatniegoAdresata=0;}
+    void dodajAdresata(int idZalogowanegoUzytkownika);
+    vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     void wypiszWszystkichAdresatow();
     void wyswietlWszystkichAdresatow();
 };

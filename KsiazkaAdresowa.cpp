@@ -15,8 +15,8 @@ void KsiazkaAdresowa::logowanieUzytkownika()
     uzytkownikMenedzer.logowanieUzytkownika();
 
     if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()!=0)
-    {///problemem jest zmienna "daneOstatniegoAdresataWPliku", ktora okazuje sie pusta(?)
-        adresatMenedzer.adresaci=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+    {
+        adresatMenedzer.adresaci=adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
     }
 }
 
@@ -32,8 +32,8 @@ void KsiazkaAdresowa::wylogujUzytkownika()
 }
 
 void KsiazkaAdresowa::dodajAdresata()
-{   ///poniewaz podczas wczytywania adresatow z pliku zmianna "daneOstatniegoAdresataWPliku" zawsze byla pusta, dodano ta zmienna do metody "dodajAdresata"
-    adresatMenedzer.dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika(), plikZAdresatami.daneOstaniegoAdresataWPliku);
+{
+    adresatMenedzer.dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
 }
 
 void KsiazkaAdresowa::wypiszWszystkichAdresatow()

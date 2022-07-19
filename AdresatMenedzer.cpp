@@ -1,16 +1,11 @@
 #include "AdresatMenedzer.h" ///pozostalo zmienic rzeczy z public na private oraz zabawa z konstruktorem nazwy pliku z adresatami
 
-AdresatMenedzer::AdresatMenedzer()
-{
-    idOstatniegoAdresata=0;//zainicjalizowana wartosc zmiennej, aby nie byla "jakakolwiek" (raczej malo istotne i nic nie zmienia)
-}
-
 
 int AdresatMenedzer::podajIdOstatniegoAdresata(string daneOstaniegoAdresataWPliku)
 {
-    cout<<"daneOstaniegoAdresataWPliku(AdresatMenedzer) = "<<daneOstaniegoAdresataWPliku<<endl; //tymczasowe
-    cout<<"daneOstaniegoAdresataWPliku(AdresatMenedzer, plikZAdresatami) = "<<plikZAdresatami.daneOstaniegoAdresataWPliku<<endl; system("pause"); //tymczasowe
-    if (daneOstaniegoAdresataWPliku != "")
+    //cout<<"daneOstaniegoAdresataWPliku(AdresatMenedzer) = "<<daneOstaniegoAdresataWPliku<<endl; //tymczasowe
+    //cout<<"daneOstaniegoAdresataWPliku(AdresatMenedzer, plikZAdresatami) = "<<plikZAdresatami.daneOstaniegoAdresataWPliku<<endl; system("pause"); //tymczasowe
+    if (plikZAdresatami.daneOstaniegoAdresataWPliku != "")
     {
         cout<<"- | "<<idOstatniegoAdresata<<" <== podajIdOstatniegoAdresata, if"<<endl;// <-- tymczasowe
         idOstatniegoAdresata = plikZAdresatami.pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
@@ -22,7 +17,14 @@ int AdresatMenedzer::podajIdOstatniegoAdresata(string daneOstaniegoAdresataWPlik
 }
 
 
-void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika, string daneOstaniegoAdresataWPliku)//<-trzeba bedzie zmienic ze zmiennej na funkcje, ktora pobiera zmienna
+vector <Adresat> AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
+{
+    adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
+    return adresaci;
+}
+
+
+void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)//<-trzeba bedzie zmienic ze zmiennej na funkcje, ktora pobiera zmienna
 {
     cout<<idZalogowanegoUzytkownika<<" | "<<idOstatniegoAdresata<<" <== dodajAdresata"<<endl;// <-- tymczasowe
     Adresat adresat;
@@ -34,7 +36,7 @@ void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika, string daneOs
     if (idOstatniegoAdresata==0) //teraz tutaj nadajemy "idOstatniegoAdresata"
     {
         cout<<"ID USTATNIEGO UZYTKOWNIKA = 0"<<endl<<endl;
-        idOstatniegoAdresata = podajIdOstatniegoAdresata(daneOstaniegoAdresataWPliku);
+        idOstatniegoAdresata = podajIdOstatniegoAdresata(plikZAdresatami.daneOstaniegoAdresataWPliku);
     }
 
     //system("cls"); //<-- pozniej sie odkomentuje
