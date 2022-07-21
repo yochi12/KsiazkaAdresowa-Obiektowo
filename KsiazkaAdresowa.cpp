@@ -16,7 +16,7 @@ void KsiazkaAdresowa::logowanieUzytkownika()
 
     if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()!=0)
     {
-        adresatMenedzer.adresaci=adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+        adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
     }
 }
 
@@ -28,7 +28,7 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika()
 void KsiazkaAdresowa::wylogujUzytkownika()
 {
     uzytkownikMenedzer.wylogujUzytkownika();
-    adresatMenedzer.adresaci.clear(); //po wylogowaniu czysci vector z adresatami danego uzytkownika
+    adresatMenedzer.wyczyscVectorAdresaci();
 }
 
 void KsiazkaAdresowa::dodajAdresata()

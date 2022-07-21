@@ -15,19 +15,23 @@ class AdresatMenedzer
 {
     PlikZAdresatami plikZAdresatami;
     int idOstatniegoAdresata;
+    vector <Adresat> adresaci;
 
     Adresat podajDaneNowegoAdresata(int idZalogowanegoUzytkownika);
     void wyswietlDaneAdresata(Adresat adresat);
     int podajIdOstatniegoAdresata(string daneOstaniegoAdresataWPliku);
 
 public:
-    vector <Adresat> adresaci; //uzywam polecenia "adresaci.clear()" w "KsiazkaAdresowa", dlatego ten vector jest jako public
 
-    AdresatMenedzer(){idOstatniegoAdresata=0;}
+    AdresatMenedzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami){
+        idOstatniegoAdresata=0;
+    }
+
     void dodajAdresata(int idZalogowanegoUzytkownika);
-    vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
+    void wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     void wypiszWszystkichAdresatow();
     void wyswietlWszystkichAdresatow();
+    void wyczyscVectorAdresaci();
 };
 
 #endif

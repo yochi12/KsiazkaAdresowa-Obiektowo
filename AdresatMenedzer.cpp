@@ -1,4 +1,4 @@
-#include "AdresatMenedzer.h" ///pozostalo zmienic rzeczy z public na private oraz zabawa z konstruktorem nazwy pliku z adresatami
+#include "AdresatMenedzer.h"
 
 
 int AdresatMenedzer::podajIdOstatniegoAdresata(string daneOstaniegoAdresataWPliku)
@@ -17,10 +17,9 @@ int AdresatMenedzer::podajIdOstatniegoAdresata(string daneOstaniegoAdresataWPlik
 }
 
 
-vector <Adresat> AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
+void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
 {
     adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
-    return adresaci;
 }
 
 
@@ -29,13 +28,9 @@ void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)//<-trzeba bed
     cout<<idZalogowanegoUzytkownika<<" | "<<idOstatniegoAdresata<<" <== dodajAdresata"<<endl;// <-- tymczasowe
     Adresat adresat;
 
-    //za kazdym razem kiedy dodajemy nowego uzytkownika wczytujemy jego WSZYSTKICH adresatow, lepiej jakby raz ich wczytac dla danego uzytkownika
-    ///adresaci=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
-    //linijka wyzej byla zanim udalo sie ja zaimplementowac do "KsiazkaAdresowa"
-
     if (idOstatniegoAdresata==0) //teraz tutaj nadajemy "idOstatniegoAdresata"
     {
-        cout<<"ID USTATNIEGO UZYTKOWNIKA = 0"<<endl<<endl;
+        //cout<<"ID USTATNIEGO UZYTKOWNIKA = 0"<<endl<<endl;
         idOstatniegoAdresata = podajIdOstatniegoAdresata(plikZAdresatami.daneOstaniegoAdresataWPliku);
     }
 
@@ -113,7 +108,6 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow()
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
-    //adresaci.clear();
 }
 
 
@@ -125,6 +119,12 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat)
     cout << "Numer telefonu:     " << adresat.pobierzNumerTelefonu() << endl;
     cout << "Email:              " << adresat.pobierzEmail() << endl;
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
+}
+
+
+void AdresatMenedzer::wyczyscVectorAdresaci()
+{
+    adresaci.clear();
 }
 
 

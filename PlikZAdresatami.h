@@ -14,18 +14,23 @@ using namespace std;
 class PlikZAdresatami
 {
     fstream plikTekstowy;
-    string nazwaPlikuZAdresatami = "Adresaci.txt";//<- tymczasowo jest tutaj, trzeba zrobic tak jak uzytkownikow, za pomoca konstruktora etc.
+    const string nazwaPlikuZAdresatami;//udalo sie!
 
     bool czyPlikJestPusty();
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
 public:
+    PlikZAdresatami(string NAZWAPLIKUZADRESATAMI) : nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI){
+        daneOstaniegoAdresataWPliku = "";
+    }
 
-    string daneOstaniegoAdresataWPliku = "";
+    string daneOstaniegoAdresataWPliku;
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     void dopiszAdresataDoPliku(Adresat adresat);
+
+
 };
 
 #endif

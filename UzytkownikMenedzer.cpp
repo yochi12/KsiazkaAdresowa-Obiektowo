@@ -22,7 +22,6 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika()
     do
     {
         cout << "Podaj login: ";
-        //uzytkownik.login = wczytajLinie(); <- to bylo wczesniej, zostalo zastapione przez linijke nizej
         uzytkownik.ustawLogin(MetodyPomocnicze::wczytajLinie());
     } while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
 
@@ -126,7 +125,6 @@ void UzytkownikMenedzer::wylogujUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
     cout << "Trwa wylogowywanie..." << endl << endl;
-    //tutaj przydaloby sie wyczyscic vector z adresatami, ale to wymagaloby wiecej przeskakiwania....
     system("pause");
 }
 

@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt"); //tworzymy pierwszy obiekt klasy "KsiazkaAdresowa"
+    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt"); //tworzymy pierwszy obiekt klasy "KsiazkaAdresowa"
 
     ///zabawa z uzytkownikami
     ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
