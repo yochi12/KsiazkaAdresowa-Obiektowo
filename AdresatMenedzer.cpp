@@ -30,7 +30,6 @@ void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)//<-trzeba bed
 
     if (idOstatniegoAdresata==0) //teraz tutaj nadajemy "idOstatniegoAdresata"
     {
-        //cout<<"ID USTATNIEGO UZYTKOWNIKA = 0"<<endl<<endl;
         idOstatniegoAdresata = podajIdOstatniegoAdresata(plikZAdresatami.daneOstaniegoAdresataWPliku);
     }
 
@@ -41,8 +40,6 @@ void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)//<-trzeba bed
 
     adresaci.push_back(adresat);
     plikZAdresatami.dopiszAdresataDoPliku(adresat);
-
-    system("pause");
 }
 
 

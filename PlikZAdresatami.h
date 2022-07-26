@@ -14,7 +14,7 @@ using namespace std;
 class PlikZAdresatami
 {
     fstream plikTekstowy;
-    const string nazwaPlikuZAdresatami;//udalo sie!
+    const string nazwaPlikuZAdresatami;
 
     bool czyPlikJestPusty();
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
