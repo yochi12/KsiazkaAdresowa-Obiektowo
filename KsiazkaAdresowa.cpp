@@ -1,48 +1,37 @@
 #include "KsiazkaAdresowa.h"
 
-void KsiazkaAdresowa::rejestracjaUzytkownika()
-{
+void KsiazkaAdresowa::rejestracjaUzytkownika(){
     uzytkownikMenedzer.rejestracjaUzytkownika();
 }
 
-void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
-{
+void KsiazkaAdresowa::wypiszWszystkichUzytkownikow(){
     uzytkownikMenedzer.wypiszWszystkichUzytkownikow();
 }
 
-void KsiazkaAdresowa::logowanieUzytkownika()
-{
+void KsiazkaAdresowa::logowanieUzytkownika(){
     uzytkownikMenedzer.logowanieUzytkownika();
-    if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()!=0)
-    {cout<<"KsiazkaAdresowa::logowanie NAZWA_PLIKU_Z_ADRESATAMI = "<<NAZWA_PLIKU_Z_ADRESATAMI<<endl;
-        ///adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+    if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()!=0){
         adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
-    }//musimy sprawdzic co z wczytywaniem wszystkich adresatow w tym "new"....
+    }
 }
 
-void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika()
-{
+void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika(){
     uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
 }
 
-void KsiazkaAdresowa::wylogujUzytkownika()
-{
+void KsiazkaAdresowa::wylogujUzytkownika(){
     uzytkownikMenedzer.wylogujUzytkownika();
     adresatMenedzer->wyczyscVectorAdresaci(); //pracujac na wskazniku uzywamy strzalki "->"
 }
 
-void KsiazkaAdresowa::dodajAdresata()
-{///tutaj mozna dac sprawdzenie, czy uzytkownik jest zalogowany
-    adresatMenedzer->dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+void KsiazkaAdresowa::dodajAdresata(){
+    if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()!=0){
+        adresatMenedzer->dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+    }
+
 }
 
-void KsiazkaAdresowa::wypiszWszystkichAdresatow()
-{
-    adresatMenedzer->wypiszWszystkichAdresatow();
-}
-
-void KsiazkaAdresowa::wyswietlWszystkichAdresatow()
-{
+void KsiazkaAdresowa::wyswietlWszystkichAdresatow(){
     adresatMenedzer->wyswietlWszystkichAdresatow();
 }
 

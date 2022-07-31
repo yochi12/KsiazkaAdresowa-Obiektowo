@@ -1,9 +1,8 @@
 #include "AdresatMenedzer.h"
 
 
-void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)//<-trzeba bedzie zmienic ze zmiennej na funkcje, ktora pobiera zmienna
-{
-    cout<<idZalogowanegoUzytkownika<<" | "<<plikZAdresatami.pobierzIdOstatniegoAdresata()<<" <== dodajAdresata"<<endl;// <-- tymczasowe
+void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika){
+    cout<<idZalogowanegoUzytkownika<<" | "<<plikZAdresatami.pobierzIdOstatniegoAdresata()<<" <== AdresatMenedzer::dodajAdresata"<<endl;// <-- tymczasowe
     Adresat adresat;
 
     //system("cls"); //<-- pozniej sie odkomentuje
@@ -16,9 +15,7 @@ void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)//<-trzeba bed
 }
 
 
-Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
-{
-    cout<<idZalogowanegoUzytkownika<<" | "<<plikZAdresatami.pobierzIdOstatniegoAdresata()<<" <== podajIdOstatniegoAdresata"<<endl;// <-- tymczasowe
+Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika){
     Adresat adresat;
 
     adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata()+1); //<- dlaczego zapis "++idOstatniegoAdresata" dodaje "1" do zmiennej "idOstatniegoAdresata"??
@@ -45,44 +42,23 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
 }
 
 
-void AdresatMenedzer::wypiszWszystkichAdresatow() //to samo co "wyswietlWszystkichAdresatow()", ale na razie niech bedzie
-{
-    for(int i=0; i<adresaci.size(); i++)
-    {
-        cout<<adresaci[i].pobierzId()<<endl;
-        cout<<adresaci[i].pobierzIdUzytkownika()<<endl;
-        cout<<adresaci[i].pobierzImie()<<endl;
-        cout<<adresaci[i].pobierzNazwisko()<<endl;
-        cout<<adresaci[i].pobierzNumerTelefonu()<<endl;
-        cout<<adresaci[i].pobierzEmail()<<endl;
-        cout<<adresaci[i].pobierzAdres()<<endl<<endl;
-    }
-}
-
-
-void AdresatMenedzer::wyswietlWszystkichAdresatow()
-{
+void AdresatMenedzer::wyswietlWszystkichAdresatow(){
     //system("cls");<-- pozniej sie odkomentuje
-    if (!adresaci.empty())
-    {
+    if (!adresaci.empty()){
         cout << "             >>> ADRESACI <<<" << endl;
         cout << "-----------------------------------------------" << endl;
-        for (vector <Adresat> :: iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
-        {
+        for (vector <Adresat> :: iterator itr = adresaci.begin(); itr != adresaci.end(); itr++){
             wyswietlDaneAdresata(*itr);
         }
         cout << endl;
-    }
-    else
-    {
+    }else{
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
 }
 
 
-void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat)
-{
+void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat){
     cout << endl << "Id:                 " << adresat.pobierzId() << endl;
     cout << "Imie:               " << adresat.pobierzImie() << endl;
     cout << "Nazwisko:           " << adresat.pobierzNazwisko() << endl;
@@ -92,8 +68,7 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat)
 }
 
 
-void AdresatMenedzer::wyczyscVectorAdresaci()
-{
+void AdresatMenedzer::wyczyscVectorAdresaci(){
     adresaci.clear();
 }
 

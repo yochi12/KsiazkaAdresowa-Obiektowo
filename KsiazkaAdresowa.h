@@ -32,7 +32,6 @@ public:
     void wylogujUzytkownika();
 
     void dodajAdresata();
-    void wypiszWszystkichAdresatow();
     void wyswietlWszystkichAdresatow();//metoda ze strukturalnego pliku
 };
 
