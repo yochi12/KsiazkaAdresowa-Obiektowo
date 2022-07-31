@@ -1,22 +1,6 @@
 #include "AdresatMenedzer.h"
 
 
-int AdresatMenedzer::podajIdOstatniegoAdresata(string daneOstaniegoAdresataWPliku)
-{
-    //cout<<"daneOstaniegoAdresataWPliku(AdresatMenedzer) = "<<daneOstaniegoAdresataWPliku<<endl; //tymczasowe
-    //cout<<"daneOstaniegoAdresataWPliku(AdresatMenedzer, plikZAdresatami) = "<<plikZAdresatami.daneOstaniegoAdresataWPliku<<endl; system("pause"); //tymczasowe
-    if (plikZAdresatami.daneOstaniegoAdresataWPliku != "")
-    {
-        cout<<"- | "<<idOstatniegoAdresata<<" <== podajIdOstatniegoAdresata, if"<<endl;// <-- tymczasowe
-        idOstatniegoAdresata = plikZAdresatami.pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
-        return idOstatniegoAdresata;
-    }
-    else
-        cout<<"- | "<<idOstatniegoAdresata<<" <== podajIdOstatniegoAdresata, else"<<endl;// <-- tymczasowe
-        return 0;
-}
-
-
 void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
 {
     adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
@@ -25,13 +9,8 @@ void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogo
 
 void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)//<-trzeba bedzie zmienic ze zmiennej na funkcje, ktora pobiera zmienna
 {
-    cout<<idZalogowanegoUzytkownika<<" | "<<idOstatniegoAdresata<<" <== dodajAdresata"<<endl;// <-- tymczasowe
+    cout<<idZalogowanegoUzytkownika<<" | "<<plikZAdresatami.pobierzIdOstatniegoAdresata()<<" <== dodajAdresata"<<endl;// <-- tymczasowe
     Adresat adresat;
-
-    if (idOstatniegoAdresata==0) //teraz tutaj nadajemy "idOstatniegoAdresata"
-    {
-        idOstatniegoAdresata = podajIdOstatniegoAdresata(plikZAdresatami.daneOstaniegoAdresataWPliku);
-    }
 
     //system("cls"); //<-- pozniej sie odkomentuje
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
@@ -45,10 +24,10 @@ void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika)//<-trzeba bed
 
 Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
 {
-    cout<<idZalogowanegoUzytkownika<<" | "<<idOstatniegoAdresata<<" <== podajIdOstatniegoAdresata"<<endl;// <-- tymczasowe
+    cout<<idZalogowanegoUzytkownika<<" | "<<plikZAdresatami.pobierzIdOstatniegoAdresata()<<" <== podajIdOstatniegoAdresata"<<endl;// <-- tymczasowe
     Adresat adresat;
 
-    adresat.ustawId(++idOstatniegoAdresata); //<- dlaczego ta linijka dodaje "1" do zmiennej "idOstatniegoAdresata"??
+    adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata()+1); //<- dlaczego zapis "++idOstatniegoAdresata" dodaje "1" do zmiennej "idOstatniegoAdresata"??
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
 
     cout << "Podaj imie: ";
