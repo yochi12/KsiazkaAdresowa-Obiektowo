@@ -1,5 +1,4 @@
 #include "UzytkownikMenedzer.h"
-#include "MetodyPomocnicze.h"
 
 void UzytkownikMenedzer::rejestracjaUzytkownika()
 {
@@ -23,7 +22,6 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika()
     do
     {
         cout << "Podaj login: ";
-        //uzytkownik.login = wczytajLinie(); <- to bylo wczesniej, zostalo zastapione przez linijke nizej
         uzytkownik.ustawLogin(MetodyPomocnicze::wczytajLinie());
     } while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
 
@@ -125,7 +123,18 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
 
 void UzytkownikMenedzer::wylogujUzytkownika()
 {
-    idZalogowanegoUzytkownika = 0; //chwilowo ta zmienna nie jest nam do niczego potrzebna
+    idZalogowanegoUzytkownika = 0;
     cout << "Trwa wylogowywanie..." << endl << endl;
     system("pause");
+}
+
+void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int nowyIdZalogowanegoUzytkownika)
+{
+    idZalogowanegoUzytkownika = nowyIdZalogowanegoUzytkownika;
+}
+
+
+int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
+{
+    return idZalogowanegoUzytkownika;
 }
