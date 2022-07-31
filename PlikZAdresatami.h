@@ -14,14 +14,14 @@ using namespace std;
 class PlikZAdresatami
 {
     fstream plikTekstowy;
-    const string nazwaPlikuZAdresatami;
+    const string NAZWA_PLIKU_Z_ADRESATAMI;
 
     bool czyPlikJestPusty();
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
 public:
-    PlikZAdresatami(string NAZWAPLIKUZADRESATAMI) : nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI){
+    PlikZAdresatami(string nazwaPlikuZAdresatami) : NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami){
         daneOstaniegoAdresataWPliku = "";
     }
 

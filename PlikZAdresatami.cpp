@@ -3,7 +3,7 @@
 bool PlikZAdresatami::czyPlikJestPusty()
 {
     fstream plikTekstowy1;  //dodaje na koniec nazwy "1", aby nie mylilo sie z deklaracja "plikTekstowy" z "PlikZAdresatami.h"
-    plikTekstowy1.open(nazwaPlikuZAdresatami.c_str(), ios::app);
+    plikTekstowy1.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::app);
 
     plikTekstowy1.seekg(0, ios::end);
     if (plikTekstowy1.tellg() == 0){
@@ -18,7 +18,7 @@ bool PlikZAdresatami::czyPlikJestPusty()
 void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
 {
     string liniaZDanymiAdresata = "";
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::out | ios::app);
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
 
     if (plikTekstowy.good() == true)
     {
@@ -64,7 +64,7 @@ vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(
     vector <Adresat> adresaci;
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
 
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 
     //idZalogowanegoUzytkownika=2; //<- tymczasowo (potrzebne do odczytu danych danej osoby bez logowania sie)
 
