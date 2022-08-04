@@ -11,7 +11,9 @@ class KsiazkaAdresowa
 {
     UzytkownikMenedzer uzytkownikMenedzer;
     AdresatMenedzer *adresatMenedzer;
+
     const string NAZWA_PLIKU_Z_ADRESATAMI;
+    char wybor;
 
 public:
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) :
@@ -24,6 +26,13 @@ public:
         delete adresatMenedzer; //usuwamy za pomoca operatora "new" utworzymy obiekt, pozniej trzeba go usunac
         adresatMenedzer = NULL;
     }
+
+    void menuLogowania();
+    void wybierzOpcjeZMenuLogowania();
+    char menuUzytkownika();
+    void wybierzOpcjeZMenuUzytkownika();
+
+
 
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
