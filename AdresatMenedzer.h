@@ -30,7 +30,10 @@ public:
     void dodajAdresata(int ID_ZALOGOWANEGO_UZYTKOWNIKA);
     void wypiszWszystkichAdresatow();
     void wyswietlWszystkichAdresatow();
-    void wyczyscVectorAdresaci();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
+    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
+
 };
 
 #endif

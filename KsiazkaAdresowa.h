@@ -29,9 +29,13 @@ public:
 
     void menuLogowania();
     void wybierzOpcjeZMenuLogowania();
-    char menuUzytkownika();
+    void menuUzytkownika();
     void wybierzOpcjeZMenuUzytkownika();
+    void menuEdycjaAdresata();
+    void wybierzOpcjeZMenuEdycjaAdresata();
 
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
 
 
     void rejestracjaUzytkownika();

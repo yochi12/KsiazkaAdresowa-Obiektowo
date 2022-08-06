@@ -40,9 +40,8 @@ void KsiazkaAdresowa::wybierzOpcjeZMenuLogowania()
     }
 }
 
-char KsiazkaAdresowa::menuUzytkownika()
+void KsiazkaAdresowa::menuUzytkownika()
 {
-    char wybor;
     //system("cls");
     cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
     cout << "---------------------------" << endl;
@@ -58,25 +57,24 @@ char KsiazkaAdresowa::menuUzytkownika()
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
 
-    wybor = MetodyPomocnicze::wczytajZnak(); ///z jakiegos powodu zmienna tutaj rozni sie od zmiennej w "wybierzOpcjeZMenuUzytkownika()"
-    //cout<<"wybormenuUzytkownika = "<<wybor<<endl; //<- tymczasowe
-    return wybor; //podczas proby wyboru opcji z tego menu, ta zmienna pokazywala inna wartosc (poprzednia podczas logowania, czyli "2"), dlatego jest "return" mimo, ze to jest jedna zmienna dla calej klasy
+    wybor = MetodyPomocnicze::wczytajZnak();
+    //cout<<"wybor-menuUzytkownika = "<<wybor<<endl; //<- tymczasowe
 }
 
 void KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
 {
     while (true)
     {
-        wybor = menuUzytkownika();
+        menuUzytkownika();
         //cout<<"wybor = "<<wybor<<endl; //<- tymczasowe
         switch (wybor)
             {
             case '1':
                 KsiazkaAdresowa::dodajAdresata();                       break;
             case '2':
-                //wyszukajAdresatowPoImieniu(adresaci);                 break;
+                KsiazkaAdresowa::wyszukajAdresatowPoImieniu();                 break;
             case '3':
-                //wyszukajAdresatowPoNazwisku(adresaci);                break;
+                KsiazkaAdresowa::wyszukajAdresatowPoNazwisku();                break;
                 break;
             case '4':
                 KsiazkaAdresowa::wyswietlWszystkichAdresatow();         break;
@@ -85,7 +83,7 @@ void KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
                 //idOstatniegoAdresata = podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsunietegoAdresata, idOstatniegoAdresata);
                 break;
             case '6':
-                //edytujAdresata(adresaci);                             break;
+                KsiazkaAdresowa::menuEdycjaAdresata();                           break;
                 break;
             case '7':
                 KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika();  break;
@@ -94,6 +92,26 @@ void KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
                 wybierzOpcjeZMenuLogowania();                           break;
             }
     }
+}
+
+void KsiazkaAdresowa::menuEdycjaAdresata()
+{
+    cout << endl << "   >>> MENU  EDYCJA <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Ktore dane zaktualizowac: " << endl;
+    cout << "1 - Imie" << endl;
+    cout << "2 - Nazwisko" << endl;
+    cout << "3 - Numer telefonu" << endl;
+    cout << "4 - Email" << endl;
+    cout << "5 - Adres" << endl;
+    cout << "6 - Powrot " << endl;
+    cout << endl << "Twoj wybor: ";
+    MetodyPomocnicze::wczytajZnak();
+}
+
+void KsiazkaAdresowa::wybierzOpcjeZMenuEdycjaAdresata()
+{
+
 }
 
 
@@ -124,7 +142,8 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika(){
 
 void KsiazkaAdresowa::wylogujUzytkownika(){
     uzytkownikMenedzer.wylogujUzytkownika();
-    adresatMenedzer->wyczyscVectorAdresaci(); //pracujac na wskazniku uzywamy strzalki "->"
+    delete adresatMenedzer;
+    adresatMenedzer = NULL;
 }
 
 void KsiazkaAdresowa::dodajAdresata(){
@@ -135,7 +154,18 @@ void KsiazkaAdresowa::dodajAdresata(){
 }
 
 void KsiazkaAdresowa::wyswietlWszystkichAdresatow(){
-    adresatMenedzer->wyswietlWszystkichAdresatow();
+    adresatMenedzer->wyswietlWszystkichAdresatow(); //pracujac na wskazniku uzywamy strzalki "->"
+}
+
+
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu()
+{
+    adresatMenedzer->wyszukajAdresatowPoImieniu();
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku()
+{
+    adresatMenedzer->wyszukajAdresatowPoNazwisku();
 }
 
 

@@ -69,7 +69,7 @@ void UzytkownikMenedzer::logowanieUzytkownika(){
     vector <Uzytkownik>::iterator itr = uzytkownicy.begin();
 
     while (itr != uzytkownicy.end()){
-        if (itr -> pobierzLogin() == login)// tutaj samo "pobierzLogin()" bez kropki i odwolania przed...(?)
+        if (itr -> pobierzLogin() == login)/// tutaj przechodze po wektorze zawierajacym obiekty typu "Uzytkownik", dlatego nie uzywam kropek ani innych znakow
         {
             for (int iloscProb = 3; iloscProb > 0; iloscProb--){
                 cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
