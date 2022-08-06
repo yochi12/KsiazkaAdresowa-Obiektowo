@@ -12,13 +12,18 @@ int main()
     //ksiazkaAdresowa.rejestracjaUzytkownika();
     //ksiazkaAdresowa.rejestracjaUzytkownika();
     //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
-    ksiazkaAdresowa.logowanieUzytkownika();
+    //ksiazkaAdresowa.logowanieUzytkownika();
     //ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
     //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
     //ksiazkaAdresowa.wylogujUzytkownika();
 
+    ///zabawa z menu
+    ksiazkaAdresowa.wybierzOpcjeZMenuLogowania();
+    //ksiazkaAdresowa.logowanieUzytkownika();
+
+
     ///zabawa z adresatami
-    ksiazkaAdresowa.dodajAdresata();
+    /*ksiazkaAdresowa.dodajAdresata();
     ksiazkaAdresowa.wyswietlWszystkichAdresatow();//metoda ze strukturalnego pliku
 
     ksiazkaAdresowa.wylogujUzytkownika();
@@ -31,7 +36,9 @@ int main()
     ksiazkaAdresowa.wylogujUzytkownika();
     ksiazkaAdresowa.logowanieUzytkownika();
     ksiazkaAdresowa.dodajAdresata();
-    ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+    ksiazkaAdresowa.wyswietlWszystkichAdresatow();*/
+
+
 
     return 0;
 }

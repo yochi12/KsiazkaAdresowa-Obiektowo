@@ -16,6 +16,18 @@ class Adresat
     string adres;
 
 public:
+    Adresat(int id=0, int idUzytkownika=0, string imie="", string nazwisko="", string numerTelefonu="", string email="", string adres="")
+    {//wyzej zostaly ustawione wartosci domyslne
+        this-> id=id;   //wskaznik "this", dzieki niemu nie musimy pisac np. "idNowe" etc. tylko "id=id" : ]
+        this-> idUzytkownika=idUzytkownika;
+        this-> imie=imie;
+        this-> nazwisko=nazwisko;
+        this-> numerTelefonu=numerTelefonu;
+        this-> email=email;
+        this-> adres=adres;
+    }
+
+
     void ustawId(int noweId);
     void ustawIdUzytkownika(int noweIdUzytkownika);
     void ustawImie(string noweImie);

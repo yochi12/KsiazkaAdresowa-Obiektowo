@@ -10,13 +10,32 @@ using namespace std;
 class KsiazkaAdresowa
 {
     UzytkownikMenedzer uzytkownikMenedzer;
-    AdresatMenedzer adresatMenedzer;
+    AdresatMenedzer *adresatMenedzer;
+
+    const string NAZWA_PLIKU_Z_ADRESATAMI;
+    char wybor;
 
 public:
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) :
-        uzytkownikMenedzer(nazwaPlikuZUzytkownikami),
-        adresatMenedzer(nazwaPlikuZAdresatami)
-    {};
+        uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
+    {
+        adresatMenedzer = NULL; //aby nie wskazywal na jakiekolwiek, byc moze wazne miejsce w pamieci
+    };
+    ~KsiazkaAdresowa()
+    {
+        delete adresatMenedzer; //usuwamy za pomoca operatora "new" utworzymy obiekt, pozniej trzeba go usunac
+        adresatMenedzer = NULL;
+    }
+
+    void menuLogowania();
+    void wybierzOpcjeZMenuLogowania();
+    void menuUzytkownika();
+    void wybierzOpcjeZMenuUzytkownika();
+    void menuEdycjaAdresata();
+    void wybierzOpcjeZMenuEdycjaAdresata();
+
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
 
 
     void rejestracjaUzytkownika();
@@ -26,7 +45,6 @@ public:
     void wylogujUzytkownika();
 
     void dodajAdresata();
-    void wypiszWszystkichAdresatow();
     void wyswietlWszystkichAdresatow();//metoda ze strukturalnego pliku
 };
 
