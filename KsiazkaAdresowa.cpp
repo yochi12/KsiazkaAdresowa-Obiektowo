@@ -72,16 +72,14 @@ void KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
             case '1':
                 KsiazkaAdresowa::dodajAdresata();                       break;
             case '2':
-                KsiazkaAdresowa::wyszukajAdresatowPoImieniu();                 break;
+                KsiazkaAdresowa::wyszukajAdresatowPoImieniu();                  break;
             case '3':
-                KsiazkaAdresowa::wyszukajAdresatowPoNazwisku();                break;
+                KsiazkaAdresowa::wyszukajAdresatowPoNazwisku();                 break;
                 break;
             case '4':
                 KsiazkaAdresowa::wyswietlWszystkichAdresatow();         break;
             case '5':
-                //idUsunietegoAdresata = usunAdresata(adresaci);
-                //idOstatniegoAdresata = podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsunietegoAdresata, idOstatniegoAdresata);
-                break;
+                KsiazkaAdresowa::usunAdresata();                                break;
             case '6':
                 KsiazkaAdresowa::menuEdycjaAdresata();                           break;
                 break;
@@ -166,6 +164,11 @@ void KsiazkaAdresowa::wyszukajAdresatowPoImieniu()
 void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku()
 {
     adresatMenedzer->wyszukajAdresatowPoNazwisku();
+}
+
+void KsiazkaAdresowa::usunAdresata()
+{
+    adresatMenedzer->usunAdresata();
 }
 
 

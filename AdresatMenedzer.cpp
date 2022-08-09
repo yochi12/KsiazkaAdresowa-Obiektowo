@@ -57,7 +57,6 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow(){
     system("pause");
 }
 
-
 void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat){
     cout << endl << "Id:                 " << adresat.pobierzId() << endl;
     cout << "Imie:               " << adresat.pobierzImie() << endl;
@@ -66,6 +65,7 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat){
     cout << "Email:              " << adresat.pobierzEmail() << endl;
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
 }
+
 
 void AdresatMenedzer::wyszukajAdresatowPoImieniu()
 {
@@ -83,8 +83,7 @@ void AdresatMenedzer::wyszukajAdresatowPoImieniu()
 
         for (vector <Adresat>::iterator  itr = adresaci.begin(); itr != adresaci.end(); itr++)
         {
-            if (itr -> pobierzImie() == imiePoszukiwanegoAdresata)  ///KOMPLETNIE NIE ROZUMIEM DLACZEGO "pobierzImie()" DZIALA
-                                                                    ///PONADTO "pobierzImie()" ZNAJDUJE SIE W INNEJ KLASIE A NIE DALISMY ZADNEGO ODWOLANIA
+            if (itr -> pobierzImie() == imiePoszukiwanegoAdresata)
             {
                 wyswietlDaneAdresata(*itr);
                 iloscAdresatow++;
@@ -139,4 +138,58 @@ void AdresatMenedzer::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow)
     else
         cout << endl << "Ilosc adresatow w ksiazce adresowej wynosi: " << iloscAdresatow << endl << endl;
 }
+
+
+void AdresatMenedzer::usunAdresata()
+{
+    int idUsuwanegoAdresata = 0;
+    int numerLiniiUsuwanegoAdresata = 0;
+
+    system("cls");
+    cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
+    idUsuwanegoAdresata = podajIdWybranegoAdresata();
+
+    char znak;
+    bool czyIstniejeAdresat = false;
+
+    for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
+    {
+        if (itr -> pobierzId() == idUsuwanegoAdresata)
+        {
+            czyIstniejeAdresat = true;
+            cout << endl << "Potwierdz naciskajac klawisz 't': ";
+            znak = MetodyPomocnicze::wczytajZnak();
+            if (znak == 't')
+            {   //metoda "usunWybranegoAdresataZPliku(idUsuwanegoAdresata)" powstala zamiast metod "zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata)" i  "usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata)"
+                plikZAdresatami.usunWybranegoAdresataZPliku(idUsuwanegoAdresata);
+                adresaci.erase(itr);
+                cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
+                system("pause");
+                plikZAdresatami.podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsuwanegoAdresata);
+                return; //return idUsuwanegoAdresata; //byl chyba int, teraz jest void. Trzeba bedzie ogarnac
+            }
+            else
+            {
+                cout << endl << endl << "Wybrany adresat NIE zostal usuniety" << endl << endl;
+                system("pause");
+                idUsuwanegoAdresata=0; //zobaczymy czy z tym zadziala
+                return; //return 0;
+            }
+        }
+    }
+    if (czyIstniejeAdresat == false)
+    {
+        cout << endl << "Nie ma takiego adresata w ksiazce adresowej" << endl << endl;
+        system("pause");
+    }
+}
+
+int AdresatMenedzer::podajIdWybranegoAdresata()
+{
+    int idWybranegoAdresata = 0;
+    cout << "Podaj numer ID Adresata: ";
+    idWybranegoAdresata  = MetodyPomocnicze::wczytajLiczbeCalkowita();
+    return idWybranegoAdresata;
+}
+
 

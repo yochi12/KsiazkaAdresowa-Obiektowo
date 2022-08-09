@@ -23,7 +23,7 @@ public:
     };
     ~KsiazkaAdresowa()
     {
-        delete adresatMenedzer; //usuwamy za pomoca operatora "new" utworzymy obiekt, pozniej trzeba go usunac
+        delete adresatMenedzer; //usuwamy za pomoca operatora "delete" utworzony obiekt
         adresatMenedzer = NULL;
     }
 
@@ -31,12 +31,12 @@ public:
     void wybierzOpcjeZMenuLogowania();
     void menuUzytkownika();
     void wybierzOpcjeZMenuUzytkownika();
+    void usunAdresata();
     void menuEdycjaAdresata();
     void wybierzOpcjeZMenuEdycjaAdresata();
 
     void wyszukajAdresatowPoImieniu();
     void wyszukajAdresatowPoNazwisku();
-
 
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();

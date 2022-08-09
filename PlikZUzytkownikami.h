@@ -11,8 +11,8 @@ using namespace std;
 
 class PlikZUzytkownikami
 {
-    const string NAZWA_PLIKU_Z_UZYTKOWNIKAMI; //zmieniamy plik na "const", nazwa tej zmiennej ma sie nie zmieniac w calym programie
     fstream plikTekstowy;
+    const string NAZWA_PLIKU_Z_UZYTKOWNIKAMI; //zmieniamy plik na "const", nazwa tej zmiennej ma sie nie zmieniac w calym programie
 
     bool czyPlikJestPusty();
     string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik);
