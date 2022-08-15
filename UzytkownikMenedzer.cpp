@@ -1,6 +1,5 @@
 #include "UzytkownikMenedzer.h"
 
-
 void UzytkownikMenedzer::rejestracjaUzytkownika(){
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 

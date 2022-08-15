@@ -14,28 +14,31 @@ using namespace std;
 class AdresatMenedzer
 {
     PlikZAdresatami plikZAdresatami;
-    vector <Adresat> adresaci;
+
     const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
+    vector <Adresat> adresaci;
+    char wybor;
 
     Adresat podajDaneNowegoAdresata(int ID_ZALOGOWANEGO_UZYTKOWNIKA);
     void wyswietlDaneAdresata(Adresat adresat);
+    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
+
+    void menuEdycjaAdresata();
 
 public:
-    AdresatMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
-        : plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
+    AdresatMenedzer(string nazwaPlikuZAdresatami, string nazwaPlikuZAdresatamiTymczasowo, int idZalogowanegoUzytkownika)
+        : plikZAdresatami(nazwaPlikuZAdresatami, nazwaPlikuZAdresatamiTymczasowo), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
     {
         adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     }
 
     void dodajAdresata(int ID_ZALOGOWANEGO_UZYTKOWNIKA);
     void wyswietlWszystkichAdresatow();
-
     void wyszukajAdresatowPoImieniu();
     void wyszukajAdresatowPoNazwisku();
-    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
     void usunAdresata();
     int podajIdWybranegoAdresata();
-
+    void wybierzOpcjeZMenuEdycjaAdresata();
 };
 
 #endif

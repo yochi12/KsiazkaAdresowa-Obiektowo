@@ -3,6 +3,7 @@
 
 
 void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik){
+    fstream plikTekstowy;
     string liniaZDanymiUzytkownika = "";
     plikTekstowy.open(NAZWA_PLIKU_Z_UZYTKOWNIKAMI.c_str(), ios::app);
 
@@ -22,15 +23,15 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik){
 
 
 bool PlikZUzytkownikami::czyPlikJestPusty(){
-    fstream plikTekstowy1;  //dodaje na koniec nazwy "1", aby nie mylilo sie z doklaracja "plikTekstowy" z "PlikZUzytkownikami.h"
-    plikTekstowy1.open(NAZWA_PLIKU_Z_UZYTKOWNIKAMI.c_str(), ios::app);
+    fstream plikTekstowy;
+    plikTekstowy.open(NAZWA_PLIKU_Z_UZYTKOWNIKAMI.c_str(), ios::app);
 
-    plikTekstowy1.seekg(0, ios::end);
-    if (plikTekstowy1.tellg() == 0){
-        plikTekstowy1.close();
+    plikTekstowy.seekg(0, ios::end);
+    if (plikTekstowy.tellg() == 0){
+        plikTekstowy.close();
         return true;
     }else{
-        plikTekstowy1.close();//otwieram i zamykam plik w tej metodzie, aby byla bardziej "samodzielna"
+        plikTekstowy.close();//otwieram i zamykam plik w tej metodzie, aby byla bardziej "samodzielna"
         return false;
     }
 }
@@ -49,8 +50,9 @@ string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowym
 
 vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
     Uzytkownik uzytkownik;
-    string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
+    fstream plikTekstowy;
     vector <Uzytkownik> uzytkownicy;
+    string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
 
     plikTekstowy.open(NAZWA_PLIKU_Z_UZYTKOWNIKAMI.c_str(), ios::in);
 
@@ -91,8 +93,10 @@ Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkown
 
 
 void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy){
-    string liniaZDanymiUzytkownika = "";
+    fstream plikTekstowy;
     vector <Uzytkownik>::iterator itrKoniec = --uzytkownicy.end();
+    string liniaZDanymiUzytkownika = "";
+
 
     plikTekstowy.open(NAZWA_PLIKU_Z_UZYTKOWNIKAMI.c_str(), ios::out);
 

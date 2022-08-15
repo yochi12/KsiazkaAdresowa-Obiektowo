@@ -1,5 +1,4 @@
-3|2|Asd|Zxc|ad|daw|asdef|
-4|3|Adaa|Asd|zcx|ad|daw|
-7|3|Xcv|Sdf|dfg|fgh|dfgh|
-8|3|Xcv|Cvb|dfg|dfg|dfs|
-9|3|Xcv|Fg|sdf|dfas|dasf|
+3|2|Asd|Sdaasdasd|ad|daw|asdef|
+4|3|Adaa|Dddddd|zcx|emsil|asdasdasd|
+7|3|Siedem|Sda|zxc|asd|ssssssssss|
+8|3|Osiem|Zcx|sdfg|dfgs|asd|

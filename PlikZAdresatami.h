@@ -13,37 +13,38 @@ using namespace std;
 
 class PlikZAdresatami
 {
-    fstream plikTekstowy;
     const string NAZWA_PLIKU_Z_ADRESATAMI;
+    const string NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO;
     int idOstatniegoAdresata;
-    string nazwaTymczasowegoPlikuZAdresatami; //dac to jako const?
 
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
-    bool czyPlikJestPusty();
-
-public:
-    PlikZAdresatami(string nazwaPlikuZAdresatami) : NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami){
-        idOstatniegoAdresata = 0;
-        nazwaTymczasowegoPlikuZAdresatami= "Adresaci_tymczasowo.txt";
-    }
-
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
-    vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
-    void dopiszAdresataDoPliku(Adresat adresat);
-
-    void usunWybranegoAdresataZPliku(int idUsuwanegoAdresata);//ta metoda powstala zamiast metod "zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata)" i  "usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata)"
-
     void usunPlik(string nazwaPlikuZRozszerzeniem);
     void zmienNazwePliku(string staraNazwa, string nowaNazwa);
-    int podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata);
     int pobierzZPlikuIdOstatniegoAdresata();
+    void edytujAdresataWPliku(int idSzukanegoAdresata, string liniaZDanymiAdresataOddzielonePionowymiKreskami); //kolejna metoda ktora powstala z dwoch innych
+
+    bool czyPlikJestPusty();
+
+
+public:
+    PlikZAdresatami(string nazwaPlikuZAdresatami, string nazwaPlikuZAdresatamiTymczasowo) :
+        NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami),
+        NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO(nazwaPlikuZAdresatamiTymczasowo)
+    {
+        idOstatniegoAdresata = 0;
+    }
+
+    vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
+    void dopiszAdresataDoPliku(Adresat adresat);
+    void usunWybranegoAdresataZPliku(int idUsuwanegoAdresata);//ta metoda powstala zamiast metod "zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata)" i  "usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata)"
+    int podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata);
+    void zaktualizujDaneWybranegoAdresata(Adresat adresat);
 
     //gettery i settery
     int pobierzIdOstatniegoAdresata();
-
-
 };
 
 #endif
