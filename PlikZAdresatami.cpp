@@ -1,19 +1,5 @@
 #include "PlikZAdresatami.h"
 
-bool PlikZAdresatami::czyPlikJestPusty(){
-    fstream plikTekstowy;
-    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::app);
-
-    plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0){
-        plikTekstowy.close();
-        return true;
-    }else{
-        plikTekstowy.close();//otwieram i zamykam plik w tej metodzie, aby byla bardziej "samodzielna"
-        return false;
-    }
-}
-
 
 void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat){
     fstream plikTekstowy;
@@ -23,10 +9,10 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat){
     if (plikTekstowy.good() == true){
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-        if (czyPlikJestPusty() == true)
+        if (PlikTekstowy::czyPlikJestPusty(NAZWA_PLIKU_Z_ADRESATAMI) == true)// dziedziczenie
             plikTekstowy << liniaZDanymiAdresata;
         else
-            plikTekstowy << endl << liniaZDanymiAdresata ;
+            plikTekstowy << endl << liniaZDanymiAdresata;
 
     }else
         cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
@@ -196,6 +182,8 @@ int PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata(){
 
     if (daneOstaniegoAdresataWPliku != "")
         idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
+
+    ///plikTekstowy.close(); //<-- ta linijka pewnie powinna byc tu, a nie nieco wyzej. W przypadku kiedy "plikTekstowy.good() != true" to plikTekstowy nie zamknie sie?
 }
 
 
@@ -242,4 +230,6 @@ void PlikZAdresatami::edytujAdresataWPliku(int idSzukanegoAdresata, string linia
         usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);
         zmienNazwePliku(NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO, NAZWA_PLIKU_Z_ADRESATAMI);
     }
+    ///odczytywanyPlikTekstowy.close(); //<-- te dwie linijki TU pewnie powinny zastapic te same dwie linijki nieco wyzej
+    ///tymczasowyPlikTekstowy.close();
 }

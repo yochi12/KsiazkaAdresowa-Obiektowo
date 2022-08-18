@@ -5,7 +5,7 @@ void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika){
     cout<<idZalogowanegoUzytkownika<<" | "<<plikZAdresatami.pobierzIdOstatniegoAdresata()<<" <== AdresatMenedzer::dodajAdresata"<<endl;// <-- tymczasowe
     Adresat adresat;
 
-    //system("cls"); //<-- pozniej sie odkomentuje
+    system("cls"); //<-- pozniej sie odkomentuje
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
 
     adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
@@ -43,12 +43,12 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika){
 
 
 void AdresatMenedzer::wyswietlWszystkichAdresatow(){
-    //system("cls");<-- pozniej sie odkomentuje
+    system("cls");
     if (!adresaci.empty()){
         cout << "             >>> ADRESACI <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector <Adresat> :: iterator itr = adresaci.begin(); itr != adresaci.end(); itr++){
-            wyswietlDaneAdresata(*itr);
+            wyswietlDaneAdresata(*itr);//nie trzeba iteratorami, mozna jak za pomoca zwyklych tablic ( :))) )
         }
         cout << endl;
     }else{
@@ -71,7 +71,7 @@ void AdresatMenedzer::wyszukajAdresatowPoImieniu(){
     string imiePoszukiwanegoAdresata = "";
     int iloscAdresatow = 0;
 
-    //system("cls"); //<-- pozniej sie odkomentuje
+    system("cls");
     if (!adresaci.empty()){
         cout << ">>> WYSZUKIWANIE ADRESATOW O IMIENIU <<<" << endl << endl;
 
@@ -80,8 +80,8 @@ void AdresatMenedzer::wyszukajAdresatowPoImieniu(){
         imiePoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imiePoszukiwanegoAdresata);
 
         for (vector <Adresat>::iterator  itr = adresaci.begin(); itr != adresaci.end(); itr++){
-            if (itr -> pobierzImie() == imiePoszukiwanegoAdresata){
-                wyswietlDaneAdresata(*itr);
+            if (itr -> pobierzImie() == imiePoszukiwanegoAdresata){///itr odnosi sie do klasy "Adresat", dlatego "pobierzImie()" nie potrzebuje zadnego odwolania
+                wyswietlDaneAdresata(*itr);                         ///strzalka biore metode klasy "Adresat"
                 iloscAdresatow++;
             }
         }
@@ -98,7 +98,7 @@ void AdresatMenedzer::wyszukajAdresatowPoNazwisku()
     string nazwiskoPoszukiwanegoAdresata;
     int iloscAdresatow = 0;
 
-    //system("cls");
+    system("cls");
     if (!adresaci.empty()){
         cout << ">>> WYSZUKIWANIE ADRESATOW O NAZWISKU <<<" << endl << endl;
 
@@ -130,7 +130,6 @@ void AdresatMenedzer::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow){
 
 void AdresatMenedzer::usunAdresata(){
     int idUsuwanegoAdresata = 0;
-    int numerLiniiUsuwanegoAdresata = 0;
 
     system("cls");
     cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
@@ -193,7 +192,7 @@ void AdresatMenedzer::menuEdycjaAdresata(){
 
 void AdresatMenedzer::wybierzOpcjeZMenuEdycjaAdresata()
 {
-    //system("cls"); //<-- pozniej sie odkomentuje
+    system("cls"); //<-- pozniej sie odkomentuje
     Adresat adresat;
     int idEdytowanegoAdresata = 0;
 
@@ -202,7 +201,7 @@ void AdresatMenedzer::wybierzOpcjeZMenuEdycjaAdresata()
 
     bool czyIstniejeAdresat = false;
 
-    for (int i = 0; i < adresaci.size(); i++){
+    for (int i = 0; i < (int)adresaci.size(); i++){
         if (adresaci[i].pobierzId() == idEdytowanegoAdresata)
         {
             czyIstniejeAdresat = true;

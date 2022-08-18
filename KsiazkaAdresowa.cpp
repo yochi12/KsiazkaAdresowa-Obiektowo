@@ -48,7 +48,7 @@ void KsiazkaAdresowa::logowanieUzytkownika(){
 
 
 void KsiazkaAdresowa::menuUzytkownika(){
-    //system("cls");
+    system("cls");
     cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Dodaj adresata" << endl;

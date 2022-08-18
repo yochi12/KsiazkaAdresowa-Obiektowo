@@ -21,8 +21,8 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika(){
     do{
         cout << "Podaj login: ";
         uzytkownik.ustawLogin(MetodyPomocnicze::wczytajLinie());
-    }while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
-
+    }while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);//nie trzeba tego porownywac do "true", wychodzi na tao samo : ]
+                                        //jesli chca porownac do "false" to wykrzyknik przed, np. "(!uzytkownik.pobierzLogin())"
     cout << "Podaj haslo: ";
     uzytkownik.ustawHaslo(MetodyPomocnicze::wczytajLinie());
 
@@ -39,7 +39,7 @@ int UzytkownikMenedzer::pobierzIdNowegoUzytkownika(){
 
 
 bool UzytkownikMenedzer::czyIstniejeLogin(string login){
-    for(int i=0; i<uzytkownicy.size(); i++){
+    for(int i=0; i<(int)uzytkownicy.size(); i++){///inne typy zmiennych ("i" i "uzytkownicy.size()", dlatego int w nawiasie (warning, nie error))
         if(uzytkownicy[i].pobierzLogin()==login){
             cout << endl << "Istnieje uzytkownik o takim loginie." << endl;
             return true;
@@ -50,7 +50,7 @@ bool UzytkownikMenedzer::czyIstniejeLogin(string login){
 
 
 void UzytkownikMenedzer::wypiszWszystkichUzytkownikow(){
-    for(int i=0; i<uzytkownicy.size(); i++){
+    for(int i=0; i<(int)uzytkownicy.size(); i++){
         cout<<uzytkownicy[i].pobierzId()<<endl;
         cout<<uzytkownicy[i].pobierzLogin()<<endl;
         cout<<uzytkownicy[i].pobierzHaslo()<<endl<<endl;
@@ -76,7 +76,7 @@ void UzytkownikMenedzer::logowanieUzytkownika(){
 
                 if (itr -> pobierzHaslo() == haslo){
                     cout << endl << "Zalogowales sie." << endl << endl;
-                    //system("pause");
+                    system("pause");
                     idZalogowanegoUzytkownika = itr -> pobierzId(); return;
                 }
             }
@@ -111,7 +111,8 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika(){
 void UzytkownikMenedzer::wylogujUzytkownika(){
     idZalogowanegoUzytkownika = 0;
     cout << "Trwa wylogowywanie..." << endl << endl;
-    //system("pause");
+    system("pause");
+    system("cls");
 }
 
 //gettery i settery

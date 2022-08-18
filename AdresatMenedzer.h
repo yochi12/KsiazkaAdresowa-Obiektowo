@@ -2,7 +2,7 @@
 #define ADRESATMENEDZER_H
 
 #include <vector>
-#include <windows.h> //potrzebne do "system("cls")"
+#include <windows.h>
 #include <fstream>
 
 #include "Adresat.h"

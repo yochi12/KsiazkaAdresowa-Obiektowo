@@ -25,7 +25,7 @@ class KsiazkaAdresowa
     void dodajAdresata();
     void wyszukajAdresatowPoImieniu();
     void wyszukajAdresatowPoNazwisku();
-    void wyswietlWszystkichAdresatow();//metoda ze strukturalnego pliku
+    void wyswietlWszystkichAdresatow();
     void wybierzOpcjeZMenuEdycjaAdresata();
     void usunAdresata();
 

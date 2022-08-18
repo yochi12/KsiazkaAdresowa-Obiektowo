@@ -8,10 +8,11 @@
 #include <cstdlib>
 
 #include "MetodyPomocnicze.h"
+#include "PlikTekstowy.h"
 
 using namespace std;
 
-class PlikZAdresatami
+class PlikZAdresatami :public PlikTekstowy
 {
     const string NAZWA_PLIKU_Z_ADRESATAMI;
     const string NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO;
@@ -25,9 +26,6 @@ class PlikZAdresatami
     void zmienNazwePliku(string staraNazwa, string nowaNazwa);
     int pobierzZPlikuIdOstatniegoAdresata();
     void edytujAdresataWPliku(int idSzukanegoAdresata, string liniaZDanymiAdresataOddzielonePionowymiKreskami); //kolejna metoda ktora powstala z dwoch innych
-
-    bool czyPlikJestPusty();
-
 
 public:
     PlikZAdresatami(string nazwaPlikuZAdresatami, string nazwaPlikuZAdresatamiTymczasowo) :
