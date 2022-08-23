@@ -1,16 +1,14 @@
 #include "PlikZUzytkownikami.h"
-#include "MetodyPomocnicze.h"
-
 
 void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik){
     fstream plikTekstowy;
     string liniaZDanymiUzytkownika = "";
-    plikTekstowy.open(NAZWA_PLIKU_Z_UZYTKOWNIKAMI.c_str(), ios::app);
+    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::app);
 
     if (plikTekstowy.good() == true){
         liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownik);
 
-        if (PlikTekstowy::czyPlikJestPusty() == true){
+        if (czyPlikJestPusty() == true){//metoda "czyPlikJestPusty" nalezy do klasy "PlikTekstowy" (dziedziczenie)
             plikTekstowy << liniaZDanymiUzytkownika;
         }else{
             plikTekstowy << endl << liniaZDanymiUzytkownika ;
@@ -21,7 +19,6 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik){
     plikTekstowy.close();
 }
 
-
 string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik){
     string liniaZDanymiUzytkownika = "";
 
@@ -31,7 +28,6 @@ string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowym
 
     return liniaZDanymiUzytkownika;
 }
-
 
 vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
     Uzytkownik uzytkownik;
@@ -50,7 +46,6 @@ vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
     plikTekstowy.close();
     return uzytkownicy;
 }
-
 
 Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami){
     Uzytkownik uzytkownik;
@@ -75,7 +70,6 @@ Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkown
     }
     return uzytkownik;
 }
-
 
 void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy){
     fstream plikTekstowy;

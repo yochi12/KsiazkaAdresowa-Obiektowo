@@ -1,13 +1,13 @@
 #ifndef PLIKZUZYTKOWNIKAMI_H
 #define PLIKZUZYTKOWNIKAMI_H
-
-#include "PlikTekstowy.h"
-
 #include <iostream>
 #include <vector>
 #include "Uzytkownik.h"
 #include <fstream>
 #include <cstdlib>
+
+#include "PlikTekstowy.h"
+#include "MetodyPomocnicze.h"
 
 using namespace std;
 

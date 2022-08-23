@@ -1,12 +1,10 @@
 #ifndef ADRESATMENEDZER_H
 #define ADRESATMENEDZER_H
-
 #include <vector>
 #include <windows.h>
 #include <fstream>
 
 #include "Adresat.h"
-#include "MetodyPomocnicze.h"
 #include "PlikZAdresatami.h"
 
 using namespace std;
@@ -26,8 +24,8 @@ class AdresatMenedzer
     void menuEdycjaAdresata();
 
 public:
-    AdresatMenedzer(string nazwaPlikuZAdresatami, string nazwaPlikuZAdresatamiTymczasowo, int idZalogowanegoUzytkownika)
-        : plikZAdresatami(nazwaPlikuZAdresatami, nazwaPlikuZAdresatamiTymczasowo), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
+    AdresatMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
+        : plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
     {
         adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     }

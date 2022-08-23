@@ -9,8 +9,8 @@ void UzytkownikMenedzer::rejestracjaUzytkownika(){
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
+    system("cls");
 }
-
 
 Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika(){
     Uzytkownik uzytkownik;
@@ -29,14 +29,12 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika(){
     return uzytkownik;
 }
 
-
 int UzytkownikMenedzer::pobierzIdNowegoUzytkownika(){
     if (uzytkownicy.empty() == true)
         return 1;
     else
         return uzytkownicy.back().pobierzId() + 1;
 }
-
 
 bool UzytkownikMenedzer::czyIstniejeLogin(string login){
     for(int i=0; i<(int)uzytkownicy.size(); i++){///inne typy zmiennych ("i" i "uzytkownicy.size()", dlatego int w nawiasie (warning, nie error))
@@ -48,7 +46,6 @@ bool UzytkownikMenedzer::czyIstniejeLogin(string login){
     return false;
 }
 
-
 void UzytkownikMenedzer::wypiszWszystkichUzytkownikow(){
     for(int i=0; i<(int)uzytkownicy.size(); i++){
         cout<<uzytkownicy[i].pobierzId()<<endl;
@@ -56,7 +53,6 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow(){
         cout<<uzytkownicy[i].pobierzHaslo()<<endl<<endl;
     }
 }
-
 
 void UzytkownikMenedzer::logowanieUzytkownika(){
     Uzytkownik uzytkownik;
@@ -93,7 +89,6 @@ void UzytkownikMenedzer::logowanieUzytkownika(){
     idZalogowanegoUzytkownika = 0; return;
 }
 
-
 void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika(){
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
@@ -108,7 +103,6 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika(){
     }
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
-
 
 void UzytkownikMenedzer::wylogujUzytkownika(){
     idZalogowanegoUzytkownika = 0;

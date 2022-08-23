@@ -1,12 +1,11 @@
 #ifndef PLIKZADRESATAMI_H
 #define PLIKZADRESATAMI_H
-
 #include <iostream>
 #include <vector>
-#include "Adresat.h"
 #include <fstream>
 #include <cstdlib>
 
+#include "Adresat.h"
 #include "MetodyPomocnicze.h"
 #include "PlikTekstowy.h"
 
@@ -15,7 +14,8 @@ using namespace std;
 class PlikZAdresatami :public PlikTekstowy
 {
     const string NAZWA_PLIKU_Z_ADRESATAMI;
-    const string NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO;
+
+    string tymczasowaNazwaPlikuZAdresatami;
     int idOstatniegoAdresata;
 
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
@@ -26,12 +26,12 @@ class PlikZAdresatami :public PlikTekstowy
     void edytujAdresataWPliku(int idSzukanegoAdresata, string liniaZDanymiAdresataOddzielonePionowymiKreskami); //kolejna metoda ktora powstala z dwoch innych
 
 public:
-    PlikZAdresatami(string nazwaPlikuZAdresatami, string nazwaPlikuZAdresatamiTymczasowo) :
+    PlikZAdresatami(string nazwaPlikuZAdresatami) :
         NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami),
-        NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO(nazwaPlikuZAdresatamiTymczasowo),
         PlikTekstowy(nazwaPlikuZAdresatami)
     {
         idOstatniegoAdresata = 0;
+        tymczasowaNazwaPlikuZAdresatami = "Adresaci_tymczasowo.txt";
     }
 
     vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);

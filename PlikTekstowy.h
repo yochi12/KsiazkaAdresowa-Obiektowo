@@ -14,6 +14,7 @@ class PlikTekstowy
 public:
     PlikTekstowy(string nazwaPliku) : NAZWA_PLIKU(nazwaPliku) {}//ten string nie zostaje do niczego wykorzystany w metodach, nadaje tylko wartosc stalej
 
+    string pobierzNazwePliku();
     bool czyPlikJestPusty();
     void usunPlik();
     void zmienNazwePliku(string nazwaTymczasowa);

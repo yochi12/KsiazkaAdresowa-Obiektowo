@@ -1,8 +1,6 @@
 #include "AdresatMenedzer.h"
 
-
 void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika){
-    cout<<idZalogowanegoUzytkownika<<" | "<<plikZAdresatami.pobierzIdOstatniegoAdresata()<<" <== AdresatMenedzer::dodajAdresata"<<endl;// <-- tymczasowe
     Adresat adresat;
 
     system("cls");
@@ -12,8 +10,9 @@ void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika){
 
     adresaci.push_back(adresat);
     plikZAdresatami.dopiszAdresataDoPliku(adresat);
+    cout << endl << "Dodano nowego adresata" << endl << endl;
+    system("pause");
 }
-
 
 Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika){
     Adresat adresat;
@@ -41,7 +40,6 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika){
     return adresat;
 }
 
-
 void AdresatMenedzer::wyswietlWszystkichAdresatow(){
     system("cls");
     if (!adresaci.empty()){
@@ -65,7 +63,6 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat){
     cout << "Email:              " << adresat.pobierzEmail() << endl;
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
 }
-
 
 void AdresatMenedzer::wyszukajAdresatowPoImieniu(){
     string imiePoszukiwanegoAdresata = "";
@@ -190,8 +187,7 @@ void AdresatMenedzer::menuEdycjaAdresata(){
     wybor = MetodyPomocnicze::wczytajZnak();
 }
 
-void AdresatMenedzer::wybierzOpcjeZMenuEdycjaAdresata()
-{
+void AdresatMenedzer::wybierzOpcjeZMenuEdycjaAdresata(){
     system("cls");
     Adresat adresat;
     int idEdytowanegoAdresata = 0;

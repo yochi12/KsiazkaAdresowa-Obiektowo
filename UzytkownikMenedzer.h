@@ -7,7 +7,6 @@
 #include <sstream>
 
 #include "Uzytkownik.h"
-#include "MetodyPomocnicze.h"
 #include "PlikZUzytkownikami.h"
 
 using namespace std;

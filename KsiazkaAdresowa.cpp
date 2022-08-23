@@ -1,53 +1,19 @@
 #include "KsiazkaAdresowa.h"
 
-void KsiazkaAdresowa::menuLogowania(){
-    if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()==0){
-        cout << "    >>> MENU  GLOWNE <<<" <<       endl;
-        cout << "---------------------------" <<    endl;
-        cout << "1. Rejestracja" <<                 endl;
-        cout << "2. Logowanie" <<                   endl;
-        cout << "0. Koniec programu" <<             endl;
-        cout << "---------------------------" <<    endl;
-        cout << "Twoj wybor: ";
+char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego(){
 
-        wybor = MetodyPomocnicze::wczytajZnak();///dlaczego to dziala, skoro nie ma "#include "MetodyPomocnicze.h"? W "UzytkownikMenedzer" to musi byc
-    }
+    cout << "    >>> MENU  GLOWNE <<<" <<       endl;
+    cout << "---------------------------" <<    endl;
+    cout << "1. Rejestracja" <<                 endl;
+    cout << "2. Logowanie" <<                   endl;
+    cout << "0. Koniec programu" <<             endl;
+    cout << "---------------------------" <<    endl;
+    cout << "Twoj wybor: ";
+
+    return MetodyPomocnicze::wczytajZnak();
 }
 
-void KsiazkaAdresowa::wybierzOpcjeZMenuLogowania(){
-    while (true){
-        menuLogowania();
-        switch (wybor){
-            case '1':
-                rejestracjaUzytkownika();                          break;
-            case '2':
-                logowanieUzytkownika();                            break;
-            case '0':
-                exit(0);                                           break;
-            default:
-                cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
-                system("pause");                                   break;
-        }
-
-        if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()!=0){
-            wybierzOpcjeZMenuUzytkownika();
-        }
-    }
-}
-
-void KsiazkaAdresowa::rejestracjaUzytkownika(){
-    uzytkownikMenedzer.rejestracjaUzytkownika();
-}
-
-void KsiazkaAdresowa::logowanieUzytkownika(){
-    uzytkownikMenedzer.logowanieUzytkownika();
-    if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()!=0){ //<- teraz raczej nie ma sensu tego sprawdzac, skoro sprawdzamy podczas pokazywania menu
-        adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI, NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO, uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
-    }
-}
-
-
-void KsiazkaAdresowa::menuUzytkownika(){
+char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika(){
     system("cls");
     cout << " >>> MENU UZYTKOWNIKA <<<" <<      endl;
     cout << "---------------------------" <<    endl;
@@ -63,33 +29,24 @@ void KsiazkaAdresowa::menuUzytkownika(){
     cout << "---------------------------" <<    endl;
     cout << "Twoj wybor: ";
 
-    wybor = MetodyPomocnicze::wczytajZnak();
+    return MetodyPomocnicze::wczytajZnak();
 }
 
-void KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika(){
-    while (true){
-        menuUzytkownika();
-        switch (wybor){
-            case '1':
-                dodajAdresata();                               break;
-            case '2':
-                wyszukajAdresatowPoImieniu();                  break;
-            case '3':
-                wyszukajAdresatowPoNazwisku();                 break;
-            case '4':
-                wyswietlWszystkichAdresatow();                 break;
-            case '5':
-                usunAdresata();                                break;
-            case '6':
-                wybierzOpcjeZMenuEdycjaAdresata();             break;
-            case '7':
-                zmianaHaslaZalogowanegoUzytkownika();          break;
-            case '8':
-                wylogujUzytkownika();
-                wybierzOpcjeZMenuLogowania();                  break;
-            }
+void KsiazkaAdresowa::rejestracjaUzytkownika(){
+    uzytkownikMenedzer.rejestracjaUzytkownika();
+}
+
+void KsiazkaAdresowa::logowanieUzytkownika(){
+    uzytkownikMenedzer.logowanieUzytkownika();
+    if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()!=0){ //<- teraz raczej nie ma sensu tego sprawdzac, skoro sprawdzamy podczas pokazywania menu
+        adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
     }
 }
+
+bool KsiazkaAdresowa::czyUzytkownikJestZalogowany(){
+    return uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
+}
+
 
 void KsiazkaAdresowa::dodajAdresata(){
     adresatMenedzer->dodajAdresata(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
