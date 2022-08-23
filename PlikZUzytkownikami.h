@@ -19,7 +19,10 @@ class PlikZUzytkownikami :public PlikTekstowy
     Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
 
 public:
-    PlikZUzytkownikami(string nazwaPlikuZUzytkownikami) : NAZWA_PLIKU_Z_UZYTKOWNIKAMI(nazwaPlikuZUzytkownikami) {}; //korzystamy z listy inicjalizacyjnej
+    PlikZUzytkownikami(string nazwaPlikuZUzytkownikami) : //korzystamy z listy inicjalizacyjnej
+        NAZWA_PLIKU_Z_UZYTKOWNIKAMI(nazwaPlikuZUzytkownikami),
+        PlikTekstowy(nazwaPlikuZUzytkownikami) {};
+
     void dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik);
     vector <Uzytkownik> wczytajUzytkownikowZPliku();
     void zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy);

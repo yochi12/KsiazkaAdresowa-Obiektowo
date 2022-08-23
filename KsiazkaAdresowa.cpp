@@ -2,15 +2,15 @@
 
 void KsiazkaAdresowa::menuLogowania(){
     if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()==0){
-        cout << "    >>> MENU  GLOWNE <<<" << endl;
-        cout << "---------------------------" << endl;
-        cout << "1. Rejestracja" << endl;
-        cout << "2. Logowanie" << endl;
-        cout << "0. Koniec programu" << endl;
-        cout << "---------------------------" << endl;
+        cout << "    >>> MENU  GLOWNE <<<" <<       endl;
+        cout << "---------------------------" <<    endl;
+        cout << "1. Rejestracja" <<                 endl;
+        cout << "2. Logowanie" <<                   endl;
+        cout << "0. Koniec programu" <<             endl;
+        cout << "---------------------------" <<    endl;
         cout << "Twoj wybor: ";
 
-        wybor = MetodyPomocnicze::wczytajZnak();
+        wybor = MetodyPomocnicze::wczytajZnak();///dlaczego to dziala, skoro nie ma "#include "MetodyPomocnicze.h"? W "UzytkownikMenedzer" to musi byc
     }
 }
 
@@ -19,14 +19,14 @@ void KsiazkaAdresowa::wybierzOpcjeZMenuLogowania(){
         menuLogowania();
         switch (wybor){
             case '1':
-                KsiazkaAdresowa::rejestracjaUzytkownika();                          break;
+                rejestracjaUzytkownika();                          break;
             case '2':
-                KsiazkaAdresowa::logowanieUzytkownika();                            break;
+                logowanieUzytkownika();                            break;
             case '0':
-                exit(0);                                                            break;
+                exit(0);                                           break;
             default:
                 cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
-                system("pause");                                                    break;
+                system("pause");                                   break;
         }
 
         if(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika()!=0){
@@ -49,46 +49,44 @@ void KsiazkaAdresowa::logowanieUzytkownika(){
 
 void KsiazkaAdresowa::menuUzytkownika(){
     system("cls");
-    cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
-    cout << "---------------------------" << endl;
-    cout << "1. Dodaj adresata" << endl;
-    cout << "2. Wyszukaj po imieniu" << endl;
-    cout << "3. Wyszukaj po nazwisku" << endl;
-    cout << "4. Wyswietl adresatow" << endl;
-    cout << "5. Usun adresata" << endl;
-    cout << "6. Edytuj adresata" << endl;
-    cout << "---------------------------" << endl;
-    cout << "7. Zmien haslo" << endl;
-    cout << "8. Wyloguj sie" << endl;
-    cout << "---------------------------" << endl;
+    cout << " >>> MENU UZYTKOWNIKA <<<" <<      endl;
+    cout << "---------------------------" <<    endl;
+    cout << "1. Dodaj adresata" <<              endl;
+    cout << "2. Wyszukaj po imieniu" <<         endl;
+    cout << "3. Wyszukaj po nazwisku" <<        endl;
+    cout << "4. Wyswietl adresatow" <<          endl;
+    cout << "5. Usun adresata" <<               endl;
+    cout << "6. Edytuj adresata" <<             endl;
+    cout << "---------------------------" <<    endl;
+    cout << "7. Zmien haslo" <<                 endl;
+    cout << "8. Wyloguj sie" <<                 endl;
+    cout << "---------------------------" <<    endl;
     cout << "Twoj wybor: ";
 
     wybor = MetodyPomocnicze::wczytajZnak();
-    //cout<<"wybor-menuUzytkownika = "<<wybor<<endl; //<- tymczasowe
 }
 
 void KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika(){
     while (true){
         menuUzytkownika();
-        //cout<<"wybor = "<<wybor<<endl; //<- tymczasowe
         switch (wybor){
             case '1':
-                KsiazkaAdresowa::dodajAdresata();                               break;
+                dodajAdresata();                               break;
             case '2':
-                KsiazkaAdresowa::wyszukajAdresatowPoImieniu();                  break;
+                wyszukajAdresatowPoImieniu();                  break;
             case '3':
-                KsiazkaAdresowa::wyszukajAdresatowPoNazwisku();                 break;
+                wyszukajAdresatowPoNazwisku();                 break;
             case '4':
-                KsiazkaAdresowa::wyswietlWszystkichAdresatow();                 break;
+                wyswietlWszystkichAdresatow();                 break;
             case '5':
-                KsiazkaAdresowa::usunAdresata();                                break;
+                usunAdresata();                                break;
             case '6':
-                KsiazkaAdresowa::wybierzOpcjeZMenuEdycjaAdresata();             break;
+                wybierzOpcjeZMenuEdycjaAdresata();             break;
             case '7':
-                KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika();          break;
+                zmianaHaslaZalogowanegoUzytkownika();          break;
             case '8':
-                KsiazkaAdresowa::wylogujUzytkownika();
-                wybierzOpcjeZMenuLogowania();                                   break;
+                wylogujUzytkownika();
+                wybierzOpcjeZMenuLogowania();                  break;
             }
     }
 }
@@ -115,10 +113,6 @@ void KsiazkaAdresowa::usunAdresata(){
 
 void KsiazkaAdresowa::wybierzOpcjeZMenuEdycjaAdresata(){
     adresatMenedzer->wybierzOpcjeZMenuEdycjaAdresata();
-}
-
-void KsiazkaAdresowa::wypiszWszystkichUzytkownikow(){ //tymczasowe
-    uzytkownikMenedzer.wypiszWszystkichUzytkownikow();
 }
 
 void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika(){

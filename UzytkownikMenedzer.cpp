@@ -22,7 +22,7 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika(){
         cout << "Podaj login: ";
         uzytkownik.ustawLogin(MetodyPomocnicze::wczytajLinie());
     }while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);//nie trzeba tego porownywac do "true", wychodzi na tao samo : ]
-                                        //jesli chca porownac do "false" to wykrzyknik przed, np. "(!uzytkownik.pobierzLogin())"
+                                        //jesli chcemy porownac do "false" to wykrzyknik przed, np. "(!uzytkownik.pobierzLogin())"
     cout << "Podaj haslo: ";
     uzytkownik.ustawHaslo(MetodyPomocnicze::wczytajLinie());
 
@@ -82,12 +82,14 @@ void UzytkownikMenedzer::logowanieUzytkownika(){
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
+            system("cls");
             idZalogowanegoUzytkownika = 0; return;
         }
         itr++;
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
+    system("cls");
     idZalogowanegoUzytkownika = 0; return;
 }
 

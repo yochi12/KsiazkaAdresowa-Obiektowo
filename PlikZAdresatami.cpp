@@ -9,14 +9,14 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat){
     if (plikTekstowy.good() == true){
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-        if (PlikTekstowy::czyPlikJestPusty(NAZWA_PLIKU_Z_ADRESATAMI) == true)// dziedziczenie
+        if (PlikTekstowy::czyPlikJestPusty() == true)// dziedziczenie
             plikTekstowy << liniaZDanymiAdresata;
         else
             plikTekstowy << endl << liniaZDanymiAdresata;
 
     }else
         cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
-
+cout<<"PlikZAdresatami::dopiszAdresataDoPliku: "<<NAZWA_PLIKU_Z_ADRESATAMI<<endl; system("pause");///<-- tymczasowo
     idOstatniegoAdresata++;
     plikTekstowy.close();
 }
@@ -78,7 +78,7 @@ Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionow
     string pojedynczaDanaAdresata = "";
     int numerPojedynczejDanejAdresata = 1;
 
-    for (int pozycjaZnaku = 0; pozycjaZnaku < daneAdresataOddzielonePionowymiKreskami.length(); pozycjaZnaku++){
+    for (int pozycjaZnaku = 0; pozycjaZnaku < (int)daneAdresataOddzielonePionowymiKreskami.length(); pozycjaZnaku++){
         if (daneAdresataOddzielonePionowymiKreskami[pozycjaZnaku] != '|'){
             pojedynczaDanaAdresata += daneAdresataOddzielonePionowymiKreskami[pozycjaZnaku];
         }else{
@@ -143,31 +143,19 @@ void PlikZAdresatami::usunWybranegoAdresataZPliku(int idUsuwanegoAdresata){
         odczytywanyPlikTekstowy.close();
         tymczasowyPlikTekstowy.close();
 
-        usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);
-        zmienNazwePliku(NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO, NAZWA_PLIKU_Z_ADRESATAMI);
+        PlikTekstowy::usunPlik();
+        PlikTekstowy::zmienNazwePliku(NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO);
     }
 }
 
 
-void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem){
-    if (remove(nazwaPlikuZRozszerzeniem.c_str()) == 0) {}
-    else
-        cout << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;
-}
-
-void PlikZAdresatami::zmienNazwePliku(string staraNazwa, string nowaNazwa){
-    if (rename(staraNazwa.c_str(), nowaNazwa.c_str()) == 0) {}
-    else
-        cout << "Nazwa pliku nie zostala zmieniona." << staraNazwa << endl;
-}
-
-int PlikZAdresatami::podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata){
+void PlikZAdresatami::podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata){
     if (idUsuwanegoAdresata == idOstatniegoAdresata)
         pobierzZPlikuIdOstatniegoAdresata();
 }
 
 
-int PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata(){
+void PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata(){
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
@@ -182,14 +170,11 @@ int PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata(){
 
     if (daneOstaniegoAdresataWPliku != "")
         idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
-
-    ///plikTekstowy.close(); //<-- ta linijka pewnie powinna byc tu, a nie nieco wyzej. W przypadku kiedy "plikTekstowy.good() != true" to plikTekstowy nie zamknie sie?
 }
 
 
 ///edycja adresata
 void PlikZAdresatami::zaktualizujDaneWybranegoAdresata(Adresat adresat){//(Adresat adresat, int idEdytowanegoAdresata) <-- bylo, zamiast "idEdytowanegoAdresata" mamy nizej "adresat.pobierzId()"
-    int numerLiniiEdytowanegoAdresata = 0;
     string liniaZDanymiAdresata = "";
 
     liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
@@ -212,7 +197,7 @@ void PlikZAdresatami::edytujAdresataWPliku(int idSzukanegoAdresata, string linia
         {
             if(idSzukanegoAdresata!=pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia))
             {
-                if(numerWczytanejLinii>1)//ten maly "if" rozwiazuje problemy z pustymi linijkami w przypadku pierwszej osoby
+                if(numerWczytanejLinii>1)//ten maly "if" rozwiazuje problemy z pustymi linijkami w przypadku pierwszej osoby (w .txt)
                     tymczasowyPlikTekstowy<<endl;
 
                 tymczasowyPlikTekstowy<<wczytanaLinia;
@@ -227,9 +212,9 @@ void PlikZAdresatami::edytujAdresataWPliku(int idSzukanegoAdresata, string linia
         odczytywanyPlikTekstowy.close();
         tymczasowyPlikTekstowy.close();
 
-        usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);
-        zmienNazwePliku(NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO, NAZWA_PLIKU_Z_ADRESATAMI);
+        PlikTekstowy::usunPlik();
+        PlikTekstowy::zmienNazwePliku(NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO);
     }
     ///odczytywanyPlikTekstowy.close(); //<-- te dwie linijki TU pewnie powinny zastapic te same dwie linijki nieco wyzej
-    ///tymczasowyPlikTekstowy.close();
+    ///tymczasowyPlikTekstowy.close();//<-- a przynajmniej ta linijka powinna byc TU
 }

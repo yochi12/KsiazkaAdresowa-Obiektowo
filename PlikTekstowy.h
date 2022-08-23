@@ -9,8 +9,14 @@ using namespace std;
 
 class PlikTekstowy
 {
+    const string NAZWA_PLIKU;
+
 public:
-    bool czyPlikJestPusty(string nazwaPliku);
+    PlikTekstowy(string nazwaPliku) : NAZWA_PLIKU(nazwaPliku) {}//ten string nie zostaje do niczego wykorzystany w metodach, nadaje tylko wartosc stalej
+
+    bool czyPlikJestPusty();
+    void usunPlik();
+    void zmienNazwePliku(string nazwaTymczasowa);
 };
 
 #endif

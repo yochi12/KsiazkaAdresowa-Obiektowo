@@ -5,7 +5,7 @@ void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika){
     cout<<idZalogowanegoUzytkownika<<" | "<<plikZAdresatami.pobierzIdOstatniegoAdresata()<<" <== AdresatMenedzer::dodajAdresata"<<endl;// <-- tymczasowe
     Adresat adresat;
 
-    system("cls"); //<-- pozniej sie odkomentuje
+    system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
 
     adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
@@ -151,14 +151,14 @@ void AdresatMenedzer::usunAdresata(){
                 cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
                 system("pause");
                 plikZAdresatami.podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsuwanegoAdresata);
-                return; //return idUsuwanegoAdresata; //byl chyba int, teraz jest void. Trzeba bedzie ogarnac
+                return;
             }
             else
             {
                 cout << endl << endl << "Wybrany adresat NIE zostal usuniety" << endl << endl;
                 system("pause");
-                idUsuwanegoAdresata=0; //zobaczymy czy z tym zadziala
-                return; //return 0;
+                idUsuwanegoAdresata=0;
+                return;
             }
         }
     }
@@ -192,7 +192,7 @@ void AdresatMenedzer::menuEdycjaAdresata(){
 
 void AdresatMenedzer::wybierzOpcjeZMenuEdycjaAdresata()
 {
-    system("cls"); //<-- pozniej sie odkomentuje
+    system("cls");
     Adresat adresat;
     int idEdytowanegoAdresata = 0;
 

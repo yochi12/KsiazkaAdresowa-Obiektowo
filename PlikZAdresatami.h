@@ -22,15 +22,14 @@ class PlikZAdresatami :public PlikTekstowy
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
-    void usunPlik(string nazwaPlikuZRozszerzeniem);
-    void zmienNazwePliku(string staraNazwa, string nowaNazwa);
-    int pobierzZPlikuIdOstatniegoAdresata();
+    void pobierzZPlikuIdOstatniegoAdresata();
     void edytujAdresataWPliku(int idSzukanegoAdresata, string liniaZDanymiAdresataOddzielonePionowymiKreskami); //kolejna metoda ktora powstala z dwoch innych
 
 public:
     PlikZAdresatami(string nazwaPlikuZAdresatami, string nazwaPlikuZAdresatamiTymczasowo) :
         NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami),
-        NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO(nazwaPlikuZAdresatamiTymczasowo)
+        NAZWA_PLIKU_Z_ADRESATAMI_TYMCZASOWO(nazwaPlikuZAdresatamiTymczasowo),
+        PlikTekstowy(nazwaPlikuZAdresatami)
     {
         idOstatniegoAdresata = 0;
     }
@@ -38,7 +37,7 @@ public:
     vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     void dopiszAdresataDoPliku(Adresat adresat);
     void usunWybranegoAdresataZPliku(int idUsuwanegoAdresata);//ta metoda powstala zamiast metod "zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata)" i  "usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata)"
-    int podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata);
+    void podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata);
     void zaktualizujDaneWybranegoAdresata(Adresat adresat);
 
     //gettery i settery

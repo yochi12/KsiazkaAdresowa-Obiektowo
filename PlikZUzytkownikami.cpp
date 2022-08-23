@@ -10,7 +10,7 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik){
     if (plikTekstowy.good() == true){
         liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownik);
 
-        if (PlikTekstowy::czyPlikJestPusty(NAZWA_PLIKU_Z_UZYTKOWNIKAMI) == true){
+        if (PlikTekstowy::czyPlikJestPusty() == true){
             plikTekstowy << liniaZDanymiUzytkownika;
         }else{
             plikTekstowy << endl << liniaZDanymiUzytkownika ;
@@ -57,7 +57,7 @@ Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkown
     string pojedynczaDanaUzytkownika = "";
     int numerPojedynczejDanejUzytkownika = 1;
 
-    for (int pozycjaZnaku = 0; pozycjaZnaku < daneJednegoUzytkownikaOddzielonePionowymiKreskami.length(); pozycjaZnaku++){
+    for (int pozycjaZnaku = 0; pozycjaZnaku < (int)daneJednegoUzytkownikaOddzielonePionowymiKreskami.length(); pozycjaZnaku++){
         if (daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku] != '|'){
             pojedynczaDanaUzytkownika += daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku];
         }else{
