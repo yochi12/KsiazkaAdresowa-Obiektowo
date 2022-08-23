@@ -7,22 +7,21 @@
 #include <sstream>
 
 #include "Uzytkownik.h"
-#include "MetodyPomocnicze.h"
 #include "PlikZUzytkownikami.h"
 
 using namespace std;
 
 class UzytkownikMenedzer
 {
+    PlikZUzytkownikami plikZUzytkownikami;
+
     int idZalogowanegoUzytkownika;
     vector <Uzytkownik> uzytkownicy;//vector "uzytkownicy" jest teraz skladowa klasy,
     //dlatego nie musimy wysylac go np. do voida "rejestracjaUzytkownika"
-    PlikZUzytkownikami plikZUzytkownikami;
 
     Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
-
 
 public:
 

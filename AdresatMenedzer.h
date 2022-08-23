@@ -1,12 +1,10 @@
 #ifndef ADRESATMENEDZER_H
 #define ADRESATMENEDZER_H
-
 #include <vector>
-#include <windows.h> //potrzebne do "system("cls")"
+#include <windows.h>
 #include <fstream>
 
 #include "Adresat.h"
-#include "MetodyPomocnicze.h"
 #include "PlikZAdresatami.h"
 
 using namespace std;
@@ -14,11 +12,16 @@ using namespace std;
 class AdresatMenedzer
 {
     PlikZAdresatami plikZAdresatami;
-    vector <Adresat> adresaci;
+
     const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
+    vector <Adresat> adresaci;
+    char wybor;
 
     Adresat podajDaneNowegoAdresata(int ID_ZALOGOWANEGO_UZYTKOWNIKA);
     void wyswietlDaneAdresata(Adresat adresat);
+    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
+
+    void menuEdycjaAdresata();
 
 public:
     AdresatMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
@@ -28,12 +31,12 @@ public:
     }
 
     void dodajAdresata(int ID_ZALOGOWANEGO_UZYTKOWNIKA);
-    void wypiszWszystkichAdresatow();
     void wyswietlWszystkichAdresatow();
     void wyszukajAdresatowPoImieniu();
     void wyszukajAdresatowPoNazwisku();
-    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
-
+    void usunAdresata();
+    int podajIdWybranegoAdresata();
+    void wybierzOpcjeZMenuEdycjaAdresata();
 };
 
 #endif

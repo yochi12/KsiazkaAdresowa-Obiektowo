@@ -1,6 +1,5 @@
 #ifndef ADRESAT_H
 #define ADRESAT_H
-
 #include <iostream>
 
 using namespace std;
@@ -26,7 +25,6 @@ public:
         this-> email=email;
         this-> adres=adres;
     }
-
 
     void ustawId(int noweId);
     void ustawIdUzytkownika(int noweIdUzytkownika);

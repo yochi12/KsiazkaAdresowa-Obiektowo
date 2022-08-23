@@ -7,38 +7,48 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt"); //tworzymy pierwszy obiekt klasy "KsiazkaAdresowa"
 
-    ///zabawa z uzytkownikami
-    ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
-    //ksiazkaAdresowa.rejestracjaUzytkownika();
-    //ksiazkaAdresowa.rejestracjaUzytkownika();
-    //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
-    //ksiazkaAdresowa.logowanieUzytkownika();
-    //ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
-    //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
-    //ksiazkaAdresowa.wylogujUzytkownika();
+    char wybor;
 
-    ///zabawa z menu
-    ksiazkaAdresowa.wybierzOpcjeZMenuLogowania();
-    //ksiazkaAdresowa.logowanieUzytkownika();
+    while (true){
+        if(ksiazkaAdresowa.czyUzytkownikJestZalogowany()==false){
+            wybor=ksiazkaAdresowa.wybierzOpcjeZMenuGlownego();
 
+            switch (wybor){
+                case '1':
+                    ksiazkaAdresowa.rejestracjaUzytkownika();                           break;
+                case '2':
+                    ksiazkaAdresowa.logowanieUzytkownika();                             break;
+                case '0':
+                    exit(0);                                                            break;
+                default:
+                    cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
+                    system("pause");
+                    system("cls");                                                      break;
+            }
+        }
+        else
+        {
+            wybor=ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
 
-    ///zabawa z adresatami
-    /*ksiazkaAdresowa.dodajAdresata();
-    ksiazkaAdresowa.wyswietlWszystkichAdresatow();//metoda ze strukturalnego pliku
-
-    ksiazkaAdresowa.wylogujUzytkownika();
-    ksiazkaAdresowa.logowanieUzytkownika();
-    ksiazkaAdresowa.dodajAdresata();
-    ksiazkaAdresowa.wyswietlWszystkichAdresatow();
-    ksiazkaAdresowa.dodajAdresata();
-    ksiazkaAdresowa.wyswietlWszystkichAdresatow();
-
-    ksiazkaAdresowa.wylogujUzytkownika();
-    ksiazkaAdresowa.logowanieUzytkownika();
-    ksiazkaAdresowa.dodajAdresata();
-    ksiazkaAdresowa.wyswietlWszystkichAdresatow();*/
-
-
-
+            switch (wybor){
+                case '1':
+                    ksiazkaAdresowa.dodajAdresata();                        break;
+                case '2':
+                    ksiazkaAdresowa.wyszukajAdresatowPoImieniu();           break;
+                case '3':
+                    ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();          break;
+                case '4':
+                    ksiazkaAdresowa.wyswietlWszystkichAdresatow();          break;
+                case '5':
+                    ksiazkaAdresowa.usunAdresata();                         break;
+                case '6':
+                    ksiazkaAdresowa.wybierzOpcjeZMenuEdycjaAdresata();      break;
+                case '7':
+                    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();   break;
+                case '8':
+                    ksiazkaAdresowa.wylogujUzytkownika();                   break;
+                }
+        }
+    }
     return 0;
 }
