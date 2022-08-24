@@ -13,8 +13,6 @@ using namespace std;
 
 class PlikZAdresatami :public PlikTekstowy
 {
-    const string NAZWA_PLIKU_Z_ADRESATAMI;
-
     string tymczasowaNazwaPlikuZAdresatami;
     int idOstatniegoAdresata;
 
@@ -26,10 +24,7 @@ class PlikZAdresatami :public PlikTekstowy
     void edytujAdresataWPliku(int idSzukanegoAdresata, string liniaZDanymiAdresataOddzielonePionowymiKreskami); //kolejna metoda ktora powstala z dwoch innych
 
 public:
-    PlikZAdresatami(string nazwaPlikuZAdresatami) :
-        NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami),
-        PlikTekstowy(nazwaPlikuZAdresatami)
-    {
+    PlikZAdresatami(string nazwaPlikuZAdresatami) : PlikTekstowy(nazwaPlikuZAdresatami){
         idOstatniegoAdresata = 0;
         tymczasowaNazwaPlikuZAdresatami = "Adresaci_tymczasowo.txt";
     }
